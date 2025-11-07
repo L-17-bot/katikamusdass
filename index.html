@@ -49,38 +49,66 @@
                 transform: scale(1);
             }
         }
-        .core-value {
-            transition: all 0.3s ease;
-        }
-        .core-value:hover {
-            transform: translateY(-10px) rotate(5deg);
-        }
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        .core-value-icon {
-            transition: all 0.3s ease;
-        }
-        .core-value:hover .core-value-icon {
-            transform: scale(1.2);
-        }
+        </section>
+
+    <!-- Headteacher Message Section (single canonical copy) -->
+    <section id="headteacher-message" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Text Panel (left) -->
+                <article class="text-panel" aria-labelledby="headteacher-title">
+                    <h2 id="headteacher-title" class="text-3xl md:text-4xl font-bold text-blue-900 kf-animated kf-fade-up kf-delay-0">Message From the Headteacher</h2>
+                    <div class="mt-4 space-y-4 kf-stagger">
+                        <p class="text-gray-700 kf-animated kf-fade-up kf-delay-1">Welcome to Katikamu SDA Secondary School – Wobulenzi. We hope this site keeps you updated with the exciting life of our school and supports our learners, parents and community.</p>
+
+                        <p class="text-gray-700 kf-animated kf-fade-up kf-delay-2">Our pupils are at the centre of everything we do. We encourage academic excellence, spiritual growth and character development in a safe and nurturing environment.</p>
+
+                        <p class="text-gray-700 kf-animated kf-fade-up kf-delay-3">We invite you to explore our website and join us in supporting the next generation of leaders.</p>
+
+                        <div class="mt-8 flex items-center space-x-4 kf-animated kf-slide-left kf-delay-4">
+                            <div class="flex-shrink-0">
+                                <div class="w-24 h-24 rounded-full bg-blue-100 border-4 border-yellow-400 shadow-lg overflow-hidden">
+                                    <img src="https://placehold.co/400x400/073e79/ffffff?text=DP" alt="Headteacher portrait" class="w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div class="flex-grow">
+                                <h3 class="text-xl font-bold text-blue-900">Mr. Dayo Paul</h3>
+                                <p class="text-gray-600">Head Teacher, Katikamu SDA SS, Wobulenzi</p>
+                                <div class="mt-2 flex items-center text-yellow-600">
+                                    <i data-feather="phone" class="w-4 h-4 mr-2"></i>
+                                    <a href="tel:+256773009376" class="hover:text-blue-900 transition">+256-773-009376</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Image Panel (right) -->
+                <div class="grid gap-6">
+                    <div class="image-panel h-64 md:h-72 rounded-lg bg-cover bg-center shadow-lg kf-animated kf-slide-right" role="img" aria-label="Students on campus" style="background-image: url('https://www.katikamusdass.ac.ug/wp-content/uploads/2015/10/DSC_9037-1500x630.jpg');"></div>
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-md kf-animated kf-pop kf-delay-2">
+                        <blockquote class="text-blue-900 italic">"We are committed to nurturing every student's potential through academic excellence and Christian values."</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        .kf-delay-2{ animation-delay: 240ms; }
+        .kf-delay-3{ animation-delay: 360ms; }
+        .kf-delay-4{ animation-delay: 480ms; }
+
+        /* Stagger helper for container: add .kf-stagger and kf-child-* classes on children to auto-delay in markup if needed */
+        .kf-stagger > * { opacity: 0; }
+
+        /* Tidy micro interactions */
+        .kf-hover-pop:hover{ transform-origin: center; transform: translateY(-3px) scale(1.02); transition: transform 180ms var(--kf-ease); }
+
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Announcement Bar -->
     <div class="bg-blue-900 text-white text-center py-2 px-4">
-        <p class="text-sm md:text-base">🎓 Admissions Open for 2026! <a href="#" class="font-semibold underline ml-2">Apply Now</a></p>
+        <p class="text-sm md:text-base">🎓 Admissions Open for 2026! <a href="apply.html" class="font-semibold underline ml-2">Apply Now</a></p>
     </div>
 
     <!-- Header -->
@@ -124,7 +152,7 @@
         <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
             <div class="flex flex-col space-y-4">
                 <a href="index.html" class="text-blue-900 font-medium">Home</a>
-                <a href="about.html" class="text-gray-700 font-medium">About Us</a>
+                <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
                 <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
                 <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
                 <a href="studentlife.html" class="text-gray-700 font-medium">Student Life</a>
@@ -148,10 +176,10 @@
                 "Fear God and Strive" - Excellence in Education Since 1968
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-                <a href="#" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 btn-glow pulse">
+                <a href="apply.html" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 btn-glow pulse">
                     Apply Now
                 </a>
-                <a href="about.html" class="bg-transparent hover:bg-white hover:text-blue-900 text-white font-bold py-3 px-6 border-2 border-white rounded-full transition duration-300">
+                <a href="aboutus.html" class="bg-transparent hover:bg-white hover:text-blue-900 text-white font-bold py-3 px-6 border-2 border-white rounded-full transition duration-300">
                     Learn More
                 </a>
             </div>
@@ -191,6 +219,61 @@
         </div>
     </section>
 
+        <!-- From Student Life - Latest Blogs -->
+        <section id="studentlife-blogs" class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-8" data-aos="fade-up">From Student Life — Latest Blogs</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Stories, tips and updates from our students. Click any card to read the full post on the Student Life page.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
+                        <a href="studentlife.html#blog-1" class="block">
+                            <img src="images/academics.jpg" alt="A day in the dormitories" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-blue-900">A Day in the Dormitory</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Snapshots from students' daily life and routines at Katikamu.</p>
+                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                        <a href="studentlife.html#blog-2" class="block">
+                            <img src="images/schoolfees.jpg" alt="Student volunteer work" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-blue-900">Community & Volunteer Work</h3>
+                                <p class="text-gray-600 mt-2 text-sm">How students give back and build leadership through service.</p>
+                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                        <a href="studentlife.html#blog-3" class="block">
+                            <img src="images/academics.jpg" alt="Sports highlights" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-blue-900">Sports Highlights</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Recaps of recent matches and athletic achievements.</p>
+                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                        <a href="studentlife.html#blog-4" class="block">
+                            <img src="images/schoolfees.jpg" alt="Creative arts" class="w-full h-40 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-blue-900">Creative Arts & Culture</h3>
+                                <p class="text-gray-600 mt-2 text-sm">Exhibitions, performances and the students behind them.</p>
+                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Headteacher Message Section (now placed under Core Values) -->
     <!-- Mission, Vision & Philosophy Section -->
     <section class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
@@ -236,7 +319,55 @@
         </div>
     </section>
 
+    <!-- Headteacher Message Section -->
+    <section id="headteacher-message" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Text Panel (left) -->
+                <article class="text-panel" aria-labelledby="headteacher-title">
+                    <h2 id="headteacher-title" class="text-3xl md:text-4xl font-bold text-blue-900 kf-animated kf-fade-up kf-delay-0">Message From the Headteacher</h2>
+                        <div class="mt-4 space-y-4">
+                            <p class="text-gray-700 kf-animated kf-fade-up kf-delay-1">Welcome to Katikamu SDA Secondary School – Wobulenzi website. I hope that you will find it a useful source of information and that it keeps you up to date with all the exciting activities that happen in our busy school and Students' Center.</p>
+
+                            <p class="text-gray-700 kf-animated kf-fade-up kf-delay-2">We are very proud of what our students achieve and we are persistent in our efforts to ensure that they are academically, socially and emotionally prepared for the future.</p>
+
+                            <p class="text-gray-700 kf-animated kf-fade-up kf-delay-3">We inspire children to achieve their full potential through passionate teaching that develops confidence, curiosity and independent learning within a safe, supportive and inclusive environment.</p>
+
+                            <div class="mt-8 flex items-center space-x-4 kf-animated kf-slide-left kf-delay-4">
+                                <div class="flex-shrink-0">
+                                    <div class="w-24 h-24 rounded-full bg-blue-100 border-4 border-yellow-400 shadow-lg overflow-hidden">
+                                        <img src="https://placehold.co/400x400/073e79/ffffff?text=DP" alt="Mr. Dayo Paul" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="flex-grow">
+                                    <h3 class="text-xl font-bold text-blue-900">Mr. Dayo Paul</h3>
+                                    <p class="text-gray-600">Head Teacher, Katikamu SDA SS, Wobulenzi</p>
+                                    <div class="mt-2 flex items-center text-yellow-600">
+                                        <i data-feather="phone" class="w-4 h-4 mr-2"></i>
+                                        <a href="tel:+256773009376" class="hover:text-blue-900 transition">+256-773-009376</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </article>
+
+                <!-- Image Panel (right) -->
+                <div class="grid gap-6">
+                    <div class="image-panel h-64 md:h-72 rounded-lg bg-cover bg-center shadow-lg kf-animated kf-slide-right" role="img" aria-label="Students on campus" style="background-image: url('https://www.katikamusdass.ac.ug/wp-content/uploads/2015/10/DSC_9037-1500x630.jpg');"></div>
+                    <div class="p-6 bg-blue-50 rounded-lg shadow-md kf-animated kf-pop kf-delay-2">
+                        <blockquote class="text-blue-900 italic">
+                            "We are committed to nurturing every student's potential through academic excellence and Christian values."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Core Values Section -->
+
+    
+    
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-12" data-aos="fade-up">Our Core Values</h2>
@@ -335,6 +466,10 @@
         </div>
     </section>
 
+  
+
+    
+            
     <!-- Call to Action Section -->
     <section class="py-16 bg-blue-900 text-white">
         <div class="container mx-auto px-4 text-center">
@@ -380,7 +515,7 @@
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
                         <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="aboutus.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
                         <li><a href="academics.html" class="text-gray-400 hover:text-white transition">Academics</a></li>
                         <li><a href="facilities.html" class="text-gray-400 hover:text-white transition">Facilities</a></li>
                     </ul>
@@ -479,6 +614,31 @@
         backToTopButton.addEventListener('click', () => {
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
+
+        // Animate kf-* utilities on scroll: add .kf-inview when elements enter viewport
+        (function(){
+            try{
+                if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                const kfEls = document.querySelectorAll('.kf-animated');
+                if ('IntersectionObserver' in window) {
+                    const kfObserver = new IntersectionObserver((entries, obs) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('kf-inview');
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.15 });
+                    kfEls.forEach(el => kfObserver.observe(el));
+                } else {
+                    // fallback for older browsers
+                    kfEls.forEach(el => el.classList.add('kf-inview'));
+                }
+            }catch(e){
+                // fail silently if anything goes wrong
+                console.warn('kf-animate observer failed', e);
+            }
+        })();
 
         // Feather icons
         feather.replace();
