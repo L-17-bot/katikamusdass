@@ -1,76 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Katikamu SDA Secondary School</title>
-    <meta name="description" content="Get in touch with Katikamu SDA Secondary School">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-     <style>
-        body {
-            font-family: 'Open Sans', sans-serif;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -38px;
-            top: 0;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #212122;
-            border: 3px solid #99a4b4;
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: #b0b4b9;
-        }
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-        .founder-card:hover .founder-img {
-            transform: scale(1.05);
-        }
-        .founder-overlay {
-            background: rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .founder-card:hover .founder-overlay {
-            opacity: 1;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Us — Katikamu SDA SS</title>
+  <link rel="icon" href="images/katisco.jpg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --blue-900:#08324a;
+      --accent:#06b6b4;
+      --light:#eef9ff;
+      --muted:#6b7280;
+      --card-bg: #ffffff;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Inter",system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg,#e9f8ff 0%, #f7fbff 100%);
+      color:var(--blue-900);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* Header (copied / consistent with index.html style) */
+    header.sticky{
+      position:sticky; top:0; z-index:60;
+      background:#fff; box-shadow:0 6px 18px rgba(2,6,23,0.04);
+      transition:all .28s ease;
+      border-bottom: 1px solid rgba(11,33,64,0.04);
+    }
+    .header-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:52px;width:52px;border-radius:8px;object-fit:cover;box-shadow:0 6px 18px rgba(11,96,160,0.06);transition:transform .2s ease}
+    .brand img:hover{transform:translateY(-3px) scale(1.03)}
+    .brand h1{margin:0;font-family:"Poppins",sans-serif;font-size:1.06rem;color:var(--blue-900);font-weight:700}
+    nav.main{display:flex;gap:18px;align-items:center}
+    nav.main a{position:relative;padding:8px 6px;color:var(--blue-900);text-decoration:none;font-weight:600;border-radius:6px;transition:all .18s}
+    nav.main a:hover{color:#fff;background:linear-gradient(90deg,var(--accent),#7dd3fc);transform:translateY(-3px)}
+    nav.main a .underline{position:absolute;left:0;bottom:6px;height:3px;width:0;background:#f59e0b;border-radius:2px;transition:width .28s}
+    nav.main a:hover .underline{width:100%}
+    #menu-toggle{display:none;background:transparent;border:0;padding:6px;cursor:pointer}
+
+    /* Hero with background children image */
+    .hero{
+      position:relative;height:46vh;min-height:260px;display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;inset:0;
+      /* New online background: students / campus (random image from Unsplash) */
+      background-image: url('https://source.unsplash.com/1600x900/?students,campus,smile');
+      background-size:cover;background-position:center;
+      filter:contrast(0.95) saturate(0.9) blur(0.8px);
+      transform:scale(1.03);
+      opacity:0.65;
+    }
+    .hero::after{
+      content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,30,71,0.6), rgba(6,118,129,0.08));
+    }
+    .hero-inner{position:relative;z-index:3;text-align:center;color:#fff;padding:32px;max-width:980px}
+    .hero h2{margin:0;font-size:2rem;font-weight:700;letter-spacing:-0.4px}
+    .hero p{margin:.6rem 0 0;color:rgba(255,255,255,0.92);max-width:760px}
+
+    /* Contact area */
+    .wrap{max-width:1100px;margin:32px auto;padding:0 18px}
+    .grid{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+    .col{flex:1 1 420px;min-width:300px;background:var(--card-bg);border-radius:12px;padding:22px;box-shadow:0 12px 30px rgba(2,6,23,0.06);border:1px solid rgba(11,33,64,0.04);backdrop-filter: blur(4px);transition:transform .28s}
+    .col:hover{transform:translateY(-6px)}
+    .left h3,.right h3{margin:0 0 10px;font-size:1.2rem}
+    .muted{color:var(--muted);line-height:1.5}
+    .meta-list{list-style:none;padding:0;margin:8px 0 0}
+    .meta-list li{margin:8px 0;font-weight:600;color:var(--blue-900)}
+    .meta-list a{color:var(--accent);text-decoration:none}
+    .chip{display:inline-block;padding:6px 10px;background:rgba(6,182,180,0.08);color:var(--accent);border-radius:999px;font-weight:700;margin-top:8px}
+
+    /* Form styles */
+    form.contact-form{display:block}
+    .field{margin-bottom:12px}
+    label{display:block;font-weight:700;margin-bottom:6px;color:var(--blue-900)}
+    input[type="text"],input[type="email"],textarea{
+      width:100%;padding:12px 14px;border-radius:10px;border:1px solid #e6edf3;background:linear-gradient(#fff,#fbfeff);font-size:0.95rem;box-sizing:border-box;transition:box-shadow .16s,transform .12s;
+    }
+    input:focus,textarea:focus{outline:none;box-shadow:0 10px 28px rgba(6,182,180,0.08);transform:translateY(-2px);border-color:var(--accent)}
+    textarea{min-height:140px;resize:vertical}
+    .btn{
+      display:inline-flex;gap:10px;align-items:center;background:linear-gradient(90deg,#0b60a0,var(--accent));color:#fff;padding:10px 16px;border-radius:10px;border:0;font-weight:800;cursor:pointer;box-shadow:0 12px 28px rgba(11,96,160,0.12);transition:transform .14s;
+    }
+    .btn:hover{transform:translateY(-4px);box-shadow:0 26px 60px rgba(6,166,164,0.14)}
+    .small{font-size:0.92rem;color:var(--muted);margin-top:10px}
+
+    /* contact cards - quick contacts */
+    .contacts-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .card{flex:1 1 150px;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fcfeff);border:1px solid rgba(11,33,64,0.04);box-shadow:0 8px 22px rgba(2,6,23,0.04);display:flex;gap:10px;align-items:center}
+    .avatar{width:52px;height:52px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#7dd3fc);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800}
+    .card .info{font-weight:700;font-size:0.95rem;color:var(--blue-900)}
+
+    /* footer small */
+    footer{max-width:1100px;margin:40px auto;padding:24px;background:transparent;color:var(--muted);text-align:center}
+
+    /* responsive */
+    @media (max-width:900px){
+      nav.main{display:none}
+      #menu-toggle{display:inline-flex}
+      .hero{height:38vh}
+      .brand h1{font-size:0.98rem}
+    }
+  </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header (same as other pages) -->
-     <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlP3Fb5Z1i1Cc6SBcshJH4SEo1VrbwJlLIQ&s" alt="Katikamu SDA Logo" class="h-12 mr-3">
-                <h1 class="text-xl md:text-2xl font-bold text-blue-900">Katikamu SDA <span class="text-yellow-600">Secondary</span></h1>
-            </div>
-            
-            <nav class="hidden md:flex space-x-8">
+<body>
+  <!-- header -->
+  <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300" role="banner" aria-label="Main header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="logo.jpg" alt="Katikamu SDA logo" />
+        <h1>Katikamu SDA <span style="color:#f5b90b">Secondary</span></h1>
+      </div>
+
+      <nav class="hidden md:flex space-x-8">
                 <a href="index.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Home
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="aboutus.html" class="text-blue-900 font-medium hover:text-yellow-600 transition relative group">About Us
+                <a href="aboutus.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">About Us
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
                 <a href="academics.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Academics
@@ -85,7 +138,7 @@
                 <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">News & Events
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Contact
+                <a href="contact.html" class="text-blue-900 font-medium hover:text-yellow-600 transition relative group">Contact
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
             </nav>
@@ -99,366 +152,172 @@
         <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
             <div class="flex flex-col space-y-4">
                 <a href="index.html" class="text-gray-700 font-medium">Home</a>
-                <a href="aboutus.html" class="text-blue-900 font-medium">About Us</a>
+                <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
                 <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
                 <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
                 <a href="studentlife.html" class="text-gray-700 font-medium">Student Life</a>
                 <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
-                <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
+                <a href="contact.html" class="text-blue-900 font-medium">Contact</a>
             </div>
         </div>
-    </header>
+  </header>
 
-    </header>
-
-    <!-- Hero Section -->
-    <section class="relative py-20">
-    <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
-             alt="Contact Background" 
-             class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-blue-900/75"></div>
+  <!-- hero -->
+  <section class="hero" role="region" aria-label="Contact hero">
+    <div class="hero-inner">
+      <div class="white-board" role="article" aria-label="Contact info">
+        <h2>Contact Katikamu SDA Secondary School</h2>
+        <p>We're here to help — use the form to send a message, or contact us by email, phone or via the website.</p>
+      </div>
     </div>
-    <div class="container mx-auto px-4 relative z-10 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4" data-aos="fade-up">Contact Us</h1>
-        <p class="text-xl text-white max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-            We'd love to hear from you. Get in touch with us for any inquiries.
-        </p>
+  </section>
+
+  <!-- main contact area -->
+  <main class="wrap" id="contacts">
+    <div class="grid">
+      <!-- left -->
+      <aside class="col left" aria-labelledby="left-title">
+        <h3 id="left-title">Other ways to contact us</h3>
+        <p class="muted">Katikamu SDA Secondary School is available on most social networks. Please like our pages and follow us to keep up to date with all activities at our school.</p>
+
+        <div style="margin-top:12px">
+          <strong>Address</strong>
+          <p class="muted">P.O. BOX 53, Wobulenzi, Uganda</p>
+        </div>
+
+        <div style="margin-top:12px">
+          <strong>Contact</strong>
+          <ul class="meta-list" aria-label="Contact details">
+            <li>Email: <a href="mailto:katikamusdass@gmail.com">katikamusdass@gmail.com</a></li>
+            <li>Telephone: <a href="tel:+256772481700">+256 772 481700</a></li>
+            <li>Webmail: <a href="mailto:info@katikamusdass.ac.ug">info@katikamusdass.ac.ug</a></li>
+            <li>Website: <a href="https://www.katikamusdass.ac.ug" target="_blank" rel="noopener">www.katikamusdass.ac.ug</a></li>
+          </ul>
+        </div>
+
+        <div style="margin-top:12px">
+          <strong>Open Hours</strong>
+          <p class="muted">Mo–Fr: 8:00–19:00</p>
+        </div>
+
+        <div class="contacts-row" aria-hidden="false">
+          <div class="card" title="Head Teacher">
+            <div class="avatar">DK</div>
+            <div class="info">Mr. Dayo Paul<br><small style="font-weight:600;color:var(--muted)">Head Teacher</small></div>
+          </div>
+          <div class="card" title="Deputy Head">
+            <div class="avatar">GN</div>
+            <div class="info">Mr. Luwemba Eddy<br><small style="font-weight:600;color:var(--muted)">Deputy</small></div>
+          </div>
+          <div class="card" title="Director of Studies">
+            <div class="avatar">SM</div>
+            <div class="info">Mr. Okurut Dan<br><small style="font-weight:600;color:var(--muted)">Director of Studies</small></div>
+          </div>
+        </div>
+
+        <div style="margin-top:12px">
+          <span class="chip">Follow us</span>
+        </div>
+      </aside>
+
+      <!-- right: form -->
+      <section class="col right" aria-labelledby="right-title">
+        <h3 id="right-title">Get in touch</h3>
+        <div style="font-weight:800;margin-bottom:8px">Send us mail</div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="field">
+            <label for="name">Name <abbr title="required">*</abbr></label>
+            <input id="name" name="name" type="text" required placeholder="Your full name">
+          </div>
+
+          <div class="field">
+            <label for="email">E-Mail <abbr title="required">*</abbr></label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com">
+          </div>
+
+          <div class="field">
+            <label for="subject">Subject <abbr title="required">*</abbr></label>
+            <input id="subject" name="subject" type="text" required placeholder="Subject">
+          </div>
+
+          <div class="field">
+            <label for="message">Message <abbr title="required">*</abbr></label>
+            <textarea id="message" name="message" required placeholder="Write your message here..."></textarea>
+          </div>
+
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <button type="submit" class="btn" id="sendBtn">Send Message</button>
+            <button type="button" class="btn" id="copyEmail" style="background:linear-gradient(90deg,#7dd3fc,#0ea5a4)">Copy Email</button>
+            <div class="small">Or email: <a href="mailto:katikamusdass@gmail.com">katikamusdass@gmail.com</a></div>
+          </div>
+
+          <div id="formStatus" aria-live="polite" style="margin-top:12px;color:green;font-weight:700;display:none"></div>
+        </form>
+      </section>
     </div>
-</section>
+  </main>
 
-    <!-- Contact Section -->
-    <section class="py-16">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-wrap -mx-4">
-                <!-- Contact Form -->
-                <div class="w-full lg:w-2/3 px-4 mb-8" data-aos="fade-right">
-                    <div class="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-8">
-                        <h2 class="text-2xl font-bold text-blue-900 mb-6 flex items-center">
-                            <i data-feather="mail" class="w-6 h-6 mr-2"></i>
-                            Send us a Message
-                        </h2>
-                        <form id="contactForm" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label class="block text-gray-700 mb-2" for="name">Full Name</label>
-                                    <input type="text" id="name" name="name" required
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                                <div>
-                                    <label class="block text-gray-700 mb-2" for="email">Email Address</label>
-                                    <input type="email" id="email" name="email" required
-                                        class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                </div>
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2" for="subject">Subject</label>
-                                <input type="text" id="subject" name="subject" required
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                            </div>
-                            <div>
-                                <label class="block text-gray-700 mb-2" for="message">Your Message</label>
-                                <textarea id="message" name="message" rows="6" required
-                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
-                            </div>
-                            <button type="submit" 
-                                class="group w-full md:w-auto bg-yellow-600 text-white px-8 py-3 rounded-lg font-semibold 
-                                       hover:bg-yellow-700 transition-all duration-300 flex items-center justify-center">
-                                <span>Send Message</span>
-                                <i data-feather="send" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
-                            </button>
-                        </form>
-                    </div>
-                </div>
+  <footer>
+    <small>© Katikamu SDA Secondary School</small>
+  </footer>
 
-                <!-- Contact Information -->
-                <div class="w-full lg:w-1/3 px-4" data-aos="fade-left">
-                    <div class="bg-blue-900 text-white rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Get in Touch</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-start space-x-4">
-                                <i data-feather="map-pin" class="w-6 h-6"></i>
-                                <div>
-                                    <h4 class="font-semibold mb-1">Address</h4>
-                                    <p>Wobulenzi Town, Luweero District, Uganda</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <i data-feather="phone" class="w-6 h-6"></i>
-                                <div>
-                                    <h4 class="font-semibold mb-1">Phone</h4>
-                                    <p>+256 772 481 700</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-4">
-                                <i data-feather="mail" class="w-6 h-6"></i>
-                                <div>
-                                    <h4 class="font-semibold mb-1">Email</h4>
-                                    <p>katikamusdass@gmail.com</p>
-                                </div>
-                            </div>
-                        </div>
+  <!-- JS: menu, form handling, small UX -->
+  <script>
+    // mobile menu toggle
+    (function(){
+      var btn = document.getElementById('menu-toggle');
+      var menu = document.getElementById('mobile-menu');
+      if(!btn) return;
+      btn.addEventListener('click', function(){
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        if(!menu) return;
+        menu.style.display = expanded ? 'none' : 'block';
+      });
+    })();
 
-                        <div class="mt-8 pt-8 border-t border-blue-800">
-                            <h4 class="font-semibold mb-4">Follow Us</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="hover:text-yellow-400 transition-colors duration-300">
-                                    <i data-feather="facebook"></i>
-                                </a>
-                                <a href="#" class="hover:text-yellow-400 transition-colors duration-300">
-                                    <i data-feather="twitter"></i>
-                                </a>
-                                <a href="#" class="hover:text-yellow-400 transition-colors duration-300">
-                                    <i data-feather="instagram"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-blue-900 text-center mb-12">Frequently Asked Questions</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Admission Process -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                    <h3 class="font-semibold text-lg mb-3 text-blue-900">What are the admission requirements?</h3>
-                    <p class="text-gray-600">We accept students based on their PLE results, interview performance, and available space. Minimum pass mark is aggregate 28.</p>
-                    <a href="admissions.html" class="text-yellow-600 hover:text-yellow-700 mt-4 inline-flex items-center">
-                        Learn more <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- School Fees -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                    <h3 class="font-semibold text-lg mb-3 text-blue-900">What are the school fees?</h3>
-                    <p class="text-gray-600">Our fees structure varies by class and boarding status. We offer flexible payment plans and some scholarships for exceptional students.</p>
-                    <a href="fees.html" class="text-yellow-600 hover:text-yellow-700 mt-4 inline-flex items-center">
-                        View fees structure <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Boarding Facilities -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                    <h3 class="font-semibold text-lg mb-3 text-blue-900">Do you offer boarding facilities?</h3>
-                    <p class="text-gray-600">Yes, we provide separate boarding facilities for boys and girls with 24/7 supervision and modern amenities.</p>
-                    <a href="facilities.html" class="text-yellow-600 hover:text-yellow-700 mt-4 inline-flex items-center">
-                        View facilities <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Academic Calendar -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                    <h3 class="font-semibold text-lg mb-3 text-blue-900">When does the term start?</h3>
-                    <p class="text-gray-600">Our academic calendar follows the Ministry of Education schedule. Term dates are communicated to parents in advance.</p>
-                    <a href="calendar.html" class="text-yellow-600 hover:text-yellow-700 mt-4 inline-flex items-center">
-                        View calendar <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Curriculum -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                    <h3 class="font-semibold text-lg mb-3 text-blue-900">What curriculum do you follow?</h3>
-                    <p class="text-gray-600">We follow the Uganda National Curriculum with additional emphasis on practical skills and Christian values.</p>
-                    <a href="academics.html" class="text-yellow-600 hover:text-yellow-700 mt-4 inline-flex items-center">
-                        View curriculum <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-                    </a>
-                </div>
-
-                <!-- Visiting Hours -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300">
-                    <h3 class="font-semibold text-lg mb-3 text-blue-900">When can parents visit?</h3>
-                    <p class="text-gray-600">Parents can visit during designated visiting days and by appointment for special circumstances.</p>
-                    <a href="parents-guide.html" class="text-yellow-600 hover:text-yellow-700 mt-4 inline-flex items-center">
-                        Visiting guidelines <i data-feather="arrow-right" class="w-4 h-4 ml-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Staff Profiles Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-blue-900 text-center mb-12" data-aos="fade-up">School Leadership</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Headteacher Profile -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-aos="fade-up">
-                    <div class="relative h-64">
-                        <img src="a4.png" 
-                             alt="Mr. Dayo Paul" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-blue-900">Mr. Dayo Paul</h3>
-                        <p class="text-yellow-600 font-semibold mb-3">Headteacher</p>
-                        <div class="space-y-2 text-gray-600">
-                            <div class="flex items-center">
-                                <i data-feather="phone" class="w-4 h-4 mr-2"></i>
-                                <p>+256 772 123 456</p>
-                            </div>
-                            <div class="flex items-center">
-                                <i data-feather="mail" class="w-4 h-4 mr-2"></i>
-                                <p>dayo.paul@katikamu.edu</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Deputy Headteacher Profile -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="relative h-64">
-                        <img src="a5.png" 
-                             alt="Mr. Luwemba Eddy" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-blue-900">Mr. Luwemba Eddy</h3>
-                        <p class="text-yellow-600 font-semibold mb-3">Deputy Headteacher</p>
-                        <div class="space-y-2 text-gray-600">
-                            <div class="flex items-center">
-                                <i data-feather="phone" class="w-4 h-4 mr-2"></i>
-                                <p>+256 772 234 567</p>
-                            </div>
-                            <div class="flex items-center">
-                                <i data-feather="mail" class="w-4 h-4 mr-2"></i>
-                                <p>luwemba.eddy@katikamu.edu</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Director of Studies Profile -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 transition-all duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="relative h-64">
-                        <img src="a3.png" 
-                             alt="Mr. Dan Okurut" 
-                             class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-blue-900">Mr. Dan Okurut</h3>
-                        <p class="text-yellow-600 font-semibold mb-3">Director of Studies</p>
-                        <div class="space-y-2 text-gray-600">
-                            <div class="flex items-center">
-                                <i data-feather="phone" class="w-4 h-4 mr-2"></i>
-                                <p>+256 772 345 678</p>
-                            </div>
-                            <div class="flex items-center">
-                                <i data-feather="mail" class="w-4 h-4 mr-2"></i>
-                                <p>dan.okurut@katikamu.edu</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <!-- Footer Section -->
-<footer class="bg-blue-900 text-white pt-12 pb-6">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-            <!-- School Info -->
-            <div>
-                <h4 class="text-xl font-bold mb-4">Katikamu SDA S.S</h4>
-                <p class="text-gray-300 mb-4">Nurturing Excellence in Faith and Learning</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">
-                        <i data-feather="facebook"></i>
-                    </a>
-                    <a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">
-                        <i data-feather="twitter"></i>
-                    </a>
-                    <a href="#" class="text-gray-300 hover:text-yellow-400 transition-colors">
-                        <i data-feather="instagram"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div>
-                <h4 class="text-xl font-bold mb-4">Quick Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="aboutus.html" class="text-gray-300 hover:text-yellow-400 transition-colors">About Us</a></li>
-                    <li><a href="academics.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Academics</a></li>
-                    <li><a href="admissions.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Admissions</a></li>
-                    <li><a href="facilities.html" class="text-gray-300 hover:text-yellow-400 transition-colors">Facilities</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div>
-                <h4 class="text-xl font-bold mb-4">Contact Us</h4>
-                <ul class="space-y-2">
-                    <li class="flex items-center">
-                        <i data-feather="map-pin" class="w-4 h-4 mr-2"></i>
-                        <span class="text-gray-300">Wobulenzi Town, Luweero District</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i data-feather="phone" class="w-4 h-4 mr-2"></i>
-                        <span class="text-gray-300">+256 772 481 700</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i data-feather="mail" class="w-4 h-4 mr-2"></i>
-                        <span class="text-gray-300">katikamusdass@gmail.com</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Newsletter -->
-            <div>
-                <h4 class="text-xl font-bold mb-4">Newsletter</h4>
-                <p class="text-gray-300 mb-4">Subscribe to our newsletter for updates</p>
-                <form class="flex">
-                    <input type="email" placeholder="Your email" 
-                           class="w-full px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-900">
-                    <button type="submit" 
-                            class="bg-yellow-600 px-4 py-2 rounded-r-lg hover:bg-yellow-700 transition-colors">
-                        <i data-feather="send" class="w-4 h-4"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="pt-8 border-t border-gray-800 text-center">
-            <p class="text-gray-400">&copy; 2025 Katikamu SDA Secondary School. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-<!-- Footer Script -->
-<script>
-    // Initialize AOS
-    AOS.init({
-        duration: 800,
-        once: true
+    // copy primary email
+    document.getElementById('copyEmail').addEventListener('click', function(){
+      navigator.clipboard?.writeText('katikamusdass@gmail.com').then(function(){
+        alert('Email copied: katikamusdass@gmail.com');
+      }, function(){ alert('Copy failed'); });
     });
 
-    // Mobile menu toggle
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
+    // simple client-side validation + use mailto as fallback
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var subject = document.getElementById('subject').value.trim();
+      var message = document.getElementById('message').value.trim();
+      var status = document.getElementById('formStatus');
 
-    // Initialize Feather Icons
-    feather.replace();
+      if(!name || !email || !subject || !message){
+        status.style.display='block'; status.style.color='crimson';
+        status.textContent = 'Please complete all required fields.';
+        return;
+      }
+      // show sending state
+      status.style.display='block'; status.style.color='var(--blue-900)';
+      status.textContent = 'Preparing message...';
 
-    // Form submission handling
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Add your form submission logic here
-        Swal.fire({
-            title: 'Message Sent!',
-            text: 'Thank you for contacting us. We will get back to you soon.',
-            icon: 'success',
-            confirmButtonColor: '#EAB308'
-        });
+      // build mailto link (opens user's email client)
+      var body = 'Name: ' + name + '%0D%0AEmail: ' + email + '%0D%0A%0D%0A' + encodeURIComponent(message);
+      var mailto = 'mailto:katikamusdass@gmail.com'
+                 + '?subject=' + encodeURIComponent(subject)
+                 + '&body=' + body;
+
+      // open mailto then show success
+      window.location.href = mailto;
+
+      // show temporary success note (in case mail client opened)
+      setTimeout(function(){
+        status.style.color='green';
+        status.textContent = 'Message prepared. Your mail app should open — you can send the message from there.';
+        document.getElementById('contactForm').reset();
+      }, 700);
     });
-</script>
+  </script>
 </body>
 </html>
