@@ -19,6 +19,29 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
         }
+        .facility-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .facility-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        .gallery-modal.active {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -89,7 +112,270 @@
         </div>
     </section>
 
+    <!-- Title Section -->
+    <div class="text-center py-8 bg-white">
+        <h2 class="text-3xl md:text-4xl font-bold text-blue-900" data-aos="fade-up">View Us Here</h2>
+        <div class="w-24 h-1 bg-yellow-600 mx-auto mt-4" data-aos="fade-up" data-aos-delay="100"></div>
+    </div>
+
     <!-- Main Content -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
-            <p class="text-gray-700">Our facilities include:</p>
+            <!-- Facilities Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+                <!-- Classrooms -->
+                <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden" 
+                     data-aos="fade-up"
+                     onclick="showGallery('classrooms')">
+                    <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Modern Classrooms" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">Modern Classrooms</h3>
+                        <p class="text-gray-600">Spacious, well-ventilated classrooms equipped with smart boards and modern learning tools to enhance the educational experience.</p>
+                    </div>
+                </div>
+
+                <!-- Science Labs -->
+                <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden" 
+                     data-aos="fade-up" data-aos-delay="100"
+                     onclick="showGallery('science-labs')">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Science Laboratories" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">Science Laboratories</h3>
+                        <p class="text-gray-600">State-of-the-art labs for Physics, Chemistry, and Biology with advanced equipment for practical learning.</p>
+                    </div>
+                </div>
+
+                <!-- Library -->
+                <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden" 
+                     data-aos="fade-up" data-aos-delay="200"
+                     onclick="showGallery('library')">
+                    <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Library" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">Modern Library</h3>
+                        <p class="text-gray-600">Extensive collection of books, digital resources, and quiet study spaces for focused learning and research.</p>
+                    </div>
+                </div>
+
+                <!-- Sports Facilities -->
+                <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden" 
+                     data-aos="fade-up"
+                     onclick="showGallery('sports-facilities')">
+                    <img src="https://images.unsplash.com/photo-1584277261846-c6a1672ed979?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Sports Grounds" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">Sports Facilities</h3>
+                        <p class="text-gray-600">Multiple sports grounds, indoor gymnasium, and training facilities for various sports activities.</p>
+                    </div>
+                </div>
+
+                <!-- Computer Labs -->
+                <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden" 
+                     data-aos="fade-up" data-aos-delay="100"
+                     onclick="showGallery('computer-labs')">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Computer Labs" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">Computer Labs</h3>
+                        <p class="text-gray-600">Modern computer laboratories with high-speed internet and latest software for digital literacy.</p>
+                    </div>
+                </div>
+
+                <!-- Dormitories -->
+                <div class="facility-card bg-white rounded-xl shadow-lg overflow-hidden" 
+                     data-aos="fade-up" data-aos-delay="200"
+                     onclick="showGallery('dormitories')">
+                    <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                         alt="Dormitories" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">Dormitories</h3>
+                        <p class="text-gray-600">Comfortable residential facilities with modern amenities and 24/7 security for boarding students.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Gallery Showcase -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap -mx-4">
+                <!-- Large featured image -->
+                <div class="w-full lg:w-1/2 px-4 mb-8" data-aos="fade-right">
+                    <div class="relative overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                             alt="School Campus Aerial View" 
+                             class="w-full h-[500px] object-cover transform hover:scale-110 transition duration-500">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                            <h3 class="text-white text-2xl font-bold">Our Beautiful Campus</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smaller image grid -->
+                <div class="w-full lg:w-1/2 px-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="relative overflow-hidden rounded-xl shadow-lg" data-aos="fade-up">
+                            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Modern Library" 
+                                 class="w-full h-60 object-cover transform hover:scale-110 transition duration-500">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                <h4 class="text-white text-lg font-semibold">Library</h4>
+                            </div>
+                        </div>
+
+                        <div class="relative overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Science Lab" 
+                                 class="w-full h-60 object-cover transform hover:scale-110 transition duration-500">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                <h4 class="text-white text-lg font-semibold">Science Labs</h4>
+                            </div>
+                        </div>
+
+                        <div class="relative overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://images.unsplash.com/photo-1584277261846-c6a1672ed979?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Sports Ground" 
+                                 class="w-full h-60 object-cover transform hover:scale-110 transition duration-500">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                <h4 class="text-white text-lg font-semibold">Sports Facilities</h4>
+                            </div>
+                        </div>
+
+                        <div class="relative overflow-hidden rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                                 alt="Computer Lab" 
+                                 class="w-full h-60 object-cover transform hover:scale-110 transition duration-500">
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                                <h4 class="text-white text-lg font-semibold">Computer Labs</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- Visit Section -->
+            <div class="mt-20 text-center bg-blue-50 rounded-2xl p-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Visit Our Campus</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-8">Experience our world-class facilities firsthand. Schedule a campus tour today and see how we provide the best environment for learning and growth.</p>
+                <a href="contact.html" class="inline-block bg-yellow-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-yellow-700 transition-colors duration-300">Schedule a Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Modal -->
+<div id="galleryModal" class="gallery-modal">
+    <button onclick="closeGallery()" class="fixed top-4 right-4 text-white text-4xl z-50">&times;</button>
+    
+    <!-- Classrooms Gallery -->
+    <div id="classrooms-gallery" class="gallery-section hidden">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Classroom Facilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1495465798138-718f86d1a4bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+        </div>
+    </div>
+    
+    <!-- Science Labs Gallery -->
+    <div id="science-labs-gallery" class="gallery-section hidden">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Science Laboratories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+        </div>
+    </div>
+
+    <!-- Library Gallery -->
+    <div id="library-gallery" class="gallery-section hidden">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Library Facilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+        </div>
+    </div>
+
+    <!-- Sports Facilities Gallery -->
+    <div id="sports-facilities-gallery" class="gallery-section hidden">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Sports Facilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img src="https://images.unsplash.com/photo-1584277261846-c6a1672ed979?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1595079676077-f88a8427f841?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+        </div>
+    </div>
+
+    <!-- Computer Labs Gallery -->
+    <div id="computer-labs-gallery" class="gallery-section hidden">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Computer Laboratories</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+        </div>
+    </div>
+
+    <!-- Dormitories Gallery -->
+    <div id="dormitories-gallery" class="gallery-section hidden">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Dormitory Facilities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+            <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="w-full rounded-lg">
+        </div>
+    </div>
+</div>
+
+    <!-- Footer Script -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Initialize Feather Icons
+        feather.replace();
+
+        function showGallery(facilityType) {
+            const modal = document.getElementById('galleryModal');
+            const galleries = document.querySelectorAll('.gallery-section');
+            
+            // Hide all galleries
+            galleries.forEach(gallery => gallery.classList.add('hidden'));
+            
+            // Show selected gallery
+            const selectedGallery = document.getElementById(`${facilityType}-gallery`);
+            if (selectedGallery) {
+                selectedGallery.classList.remove('hidden');
+            }
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close gallery when clicking outside
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGallery();
+            }
+        });
+    </script>
+</body>
+</html>
