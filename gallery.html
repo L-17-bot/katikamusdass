@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery - Katikamu SDA Secondary School</title>
+    <meta name="description" content="Photo gallery showcasing life at Katikamu SDA Secondary School">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Showcase Styles */
+        .showcase-container {
+            width: 100%;
+            min-height: 450px;
+            height: 60vh;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .showcase-list {
+            display: flex;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            list-style-type: none;
+            width: 100%;
+        }
+        
+        .showcase-item {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            position: relative;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            overflow: hidden;
+        }
+        
+        .showcase-item::before {
+            content: "";
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.75);
+            transition: all 0.35s ease;
+        }
+        
+        .showcase-item.active {
+            flex: 6;
+            cursor: default;
+        }
+        
+        .showcase-item.active::before {
+            background: linear-gradient(180deg, rgba(15, 15, 15, 0) 0%, rgba(17, 17, 17, 0.9) 100%);
+        }
+        
+        .showcase-item h3 {
+            font-weight: bold;
+            white-space: nowrap;
+            position: absolute;
+            z-index: 30;
+            opacity: 1;
+            top: 50%;
+            left: 50%;
+            transition: all 0.35s ease;
+            font-size: 24px;
+            text-transform: uppercase;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            color: white;
+        }
+        
+        .showcase-item.active h3 {
+            opacity: 0;
+            top: 200%;
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 30;
+            opacity: 0;
+            align-self: flex-end;
+            width: 100%;
+            transition: all 0.35s 0.1s ease-out;
+        }
+        
+        .showcase-item.active .section-content {
+            opacity: 1;
+        }
+        
+        .section-content .inner {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.25s ease-out;
+            max-width: 520px;
+            color: white;
+        }
+        
+        .showcase-item.active .section-content .inner {
+            opacity: 1;
+        }
+        
+        .section-content .bio h2 {
+            font-size: 36px;
+            line-height: 40px;
+            margin-bottom: 16px;
+        }
+        
+        .section-content .bio p {
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 24px;
+        }
+        
+        @media only screen and (max-width: 1280px) {
+            .showcase-list {
+                flex-direction: column;
+            }
+            
+            .showcase-item h3 {
+                transform: translate(-50%, -50%) rotate(0deg);
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlP3Fb5Z1i1Cc6SBcshJH4SEo1VrbwJlLIQ&s" alt="Katikamu SDA Logo" class="h-12 mr-3">
+                <h1 class="text-xl md:text-2xl font-bold text-blue-900">Katikamu SDA <span class="text-yellow-600">Gallery</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="aboutus.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">About Us
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="academics.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Academics
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Facilities
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="studentlife.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Student Life
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">News & Events
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+            
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <i data-feather="menu" class="text-blue-900"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-700 font-medium">Home</a>
+                <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
+                <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
+                <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
+                <a href="studentlife.html" class="text-gray-700 font-medium">Student Life</a>
+                <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
+                <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Title -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4">School Gallery</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Explore the vibrant life at Katikamu SDA Secondary School through our photo collections</p>
+        </div>
+    </section>
+
+    <!-- Gallery Sections -->
+    <section class="py-8">
+        <div class="container mx-auto px-4">
+            <!-- Academic Life -->
+            <div class="showcase-container">
+                <ul class="showcase-list">
+                    <li class="showcase-item active" style="background-image: url('images/academics.jpg');">
+                        <h3>Academic Life</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Learning Excellence</h2>
+                                    <p>Students engaged in various classroom activities and study sessions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Library</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Resource Center</h2>
+                                    <p>Our modern library facilities support research and learning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/academics.jpg');">
+                        <h3>Computer Lab</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Digital Learning</h2>
+                                    <p>State-of-the-art computer facilities for technology education.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Sports Activities -->
+            <div class="showcase-container">
+                <ul class="showcase-list">
+                    <li class="showcase-item active" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Football</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Soccer Excellence</h2>
+                                    <p>Our school football team in action on the field.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/academics.jpg');">
+                        <h3>Athletics</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Track & Field</h2>
+                                    <p>Students competing in various athletic events.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Basketball</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Court Action</h2>
+                                    <p>Basketball tournaments and training.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Cultural Events -->
+            <div class="showcase-container">
+                <ul class="showcase-list">
+                    <li class="showcase-item active" style="background-image: url('images/academics.jpg');">
+                        <h3>Music</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Musical Performances</h2>
+                                    <p>School choir and music events showcasing student talent.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Drama</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Theater Arts</h2>
+                                    <p>Drama club performances and theatrical productions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/academics.jpg');">
+                        <h3>Dance</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Dance Shows</h2>
+                                    <p>Traditional and modern dance performances.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Science & Technology -->
+            <div class="showcase-container">
+                <ul class="showcase-list">
+                    <li class="showcase-item active" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Science Lab</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Scientific Discovery</h2>
+                                    <p>Students conducting experiments in our laboratories.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/academics.jpg');">
+                        <h3>Tech Hub</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Technology Center</h2>
+                                    <p>Our modern technology facilities and innovation hub.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Robotics</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Robotics Club</h2>
+                                    <p>Students exploring robotics and automation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Faith & Spirituality -->
+            <div class="showcase-container">
+                <ul class="showcase-list">
+                    <li class="showcase-item active" style="background-image: url('images/academics.jpg');">
+                        <h3>Chapel</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Spiritual Growth</h2>
+                                    <p>Weekly chapel services and spiritual programs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Bible Study</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Faith Development</h2>
+                                    <p>Students engaged in Bible study and prayer groups.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/academics.jpg');">
+                        <h3>Community Service</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Giving Back</h2>
+                                    <p>Students serving the community through various outreach programs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Campus Life -->
+            <div class="showcase-container">
+                <ul class="showcase-list">
+                    <li class="showcase-item active" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Dormitory Life</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Boarding Facilities</h2>
+                                    <p>Life in our modern and comfortable dormitories.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/academics.jpg');">
+                        <h3>Dining Hall</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Dining Experience</h2>
+                                    <p>Our cafeteria serving nutritious meals to students.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="showcase-item" style="background-image: url('images/schoolfees.jpg');">
+                        <h3>Recreation</h3>
+                        <div class="section-content">
+                            <div class="inner">
+                                <div class="bio">
+                                    <h2>Student Life</h2>
+                                    <p>Recreational activities and social gatherings.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p>Katikamu SDA Secondary School</p>
+                    <p>P.O. Box 23, Wobulenzi</p>
+                    <p>Uganda</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-yellow-500">Home</a></li>
+                        <li><a href="aboutus.html" class="hover:text-yellow-500">About Us</a></li>
+                        <li><a href="academics.html" class="hover:text-yellow-500">Academics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Katikamu SDA SS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Showcase functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const showcaseContainers = document.querySelectorAll('.showcase-container');
+            
+            showcaseContainers.forEach(container => {
+                const items = container.querySelectorAll('.showcase-item');
+                items.forEach(item => {
+                    item.addEventListener('click', function() {
+                        // Remove active class from all items in this container
+                        items.forEach(i => i.classList.remove('active'));
+                        // Add active class to clicked item
+                        this.classList.add('active');
+                    });
+                });
+            });
+        });
+
+        // Feather icons
+        feather.replace();
+    </script>
+    <script src="assets/js/morph.js"></script>
+</body>
+</html>

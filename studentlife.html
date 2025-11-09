@@ -4,33 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Life - Katikamu SDA Secondary School</title>
-    <meta name="description" content="Experience vibrant student life at Katikamu SDA Secondary School">
+    <meta name="description" content="Experience student life at Katikamu SDA Secondary School">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-
-    
-</style>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .activity-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
-    <!-- Header with Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
+    <!-- Announcement Bar -->
+    <div class="bg-blue-900 text-white text-center py-2 px-4">
+        <p class="text-sm md:text-base">🎓 Admissions Open for 2026! <a href="apply.html" class="font-semibold underline ml-2">Apply Now</a></p>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlP3Fb5Z1i1Cc6SBcshJH4SEo1VrbwJlLIQ&s" alt="Logo" class="h-12 mr-3">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlP3Fb5Z1i1Cc6SBcshJH4SEo1VrbwJlLIQ&s" alt="Katikamu SDA Logo" class="h-12 mr-3">
                 <h1 class="text-xl md:text-2xl font-bold text-blue-900">Katikamu SDA <span class="text-yellow-600">Secondary</span></h1>
             </div>
+            
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-700 hover:text-yellow-600">Home</a>
-                <a href="aboutus.html" class="text-gray-700 hover:text-yellow-600">About Us</a>
-                <a href="academics.html" class="text-gray-700 hover:text-yellow-600">Academics</a>
-                <a href="facilities.html" class="text-gray-700 hover:text-yellow-600">Facilities</a>
-                <a href="studentlife.html" class="text-blue-900 font-medium">Student Life</a>
+                <a href="index.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="aboutus.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">About Us
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="academics.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Academics
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Facilities
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="gallery.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Gallery
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="studentlife.html" class="text-blue-900 font-medium hover:text-yellow-600 transition relative group">Student Life
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">News & Events
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
             </nav>
+            
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <i data-feather="menu" class="text-blue-900"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-700 font-medium">Home</a>
+                <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
+                <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
+                <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
+                <a href="gallery.html" class="text-gray-700 font-medium">Gallery</a>
+                <a href="studentlife.html" class="text-blue-900 font-medium">Student Life</a>
+                <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
+                <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
+            </div>
         </div>
     </header>
 
@@ -50,7 +114,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Clubs & Societies -->
-                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:box-shadow-yellow-20px transition relative group" data-aos="fade-up>
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300" data-aos="fade-up" data-aos-duration="1000">
                     <i class="fas fa-users text-3xl text-blue-900 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Clubs & Societies</h3>
                     <p class="text-gray-600 mb-4">Join various academic, cultural, and special interest clubs.</p>
@@ -92,6 +156,36 @@
                         <li><i class="fas fa-check text-green-500 mr-2"></i>Evenimg devotions</li>
                         <li><i class="fas fa-check text-green-500 mr-2"></i>Community Service</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Activities Gallery -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Life at Katikamu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c" alt="Students Playing Sports" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-2">Sports Day</h3>
+                        <p class="text-gray-600">Students enjoying various sports activities</p>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7" alt="Science Club Activities" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-2">Science Club</h3>
+                        <p class="text-gray-600">Hands-on learning experience</p>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754" alt="Music Performance" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-2">Music & Drama</h3>
+                        <p class="text-gray-600">Expressing creativity through arts</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -199,5 +293,6 @@
             once: true
         });
     </script>
+    <script src="assets/js/morph.js"></script>
 </body>
 </html>

@@ -8,25 +8,281 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
         }
-        .hero-overlay {
-            background: rgba(0, 30, 71, 0.7);
+        
+        /* Text Morph Animations */
+        .morph-text {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
+
+        .morph-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hover Effects */
+        .hover-morph {
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .hover-morph:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Text Slide Up Animation */
+        .slide-up {
+            animation: slideUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Text Wave Animation */
+        .wave-text {
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .wave-text span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .wave-text.animate span {
+            animation: waveUp 0.5s ease forwards;
+        }
+
+        @keyframes waveUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Text Reveal Animation */
+        .reveal-text {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .reveal-text::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e40af;
+            transform: scaleX(1);
+            transform-origin: right;
+            transition: transform 0.6s ease;
+        }
+
+        .reveal-text.reveal::after {
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        /* Gradient Text Hover */
+        .gradient-text {
+            background: linear-gradient(45deg, #1e40af, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .gradient-text:hover {
+            background: linear-gradient(45deg, #60a5fa, #1e40af);
+            -webkit-background-clip: text;
+            background-clip: text;
+            transform: scale(1.05);
+        }
+        
         .counter-item {
             transition: all 0.5s ease;
         }
         .counter-item:hover {
             transform: translateY(-5px);
+        }
+        
+        /* Showcase Styles */
+        .showcase-container {
+            width: 100%;
+            min-height: 450px;
+            height: 60vh;
+            overflow: hidden;
+        }
+        
+        .showcase-list {
+            display: flex;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            list-style-type: none;
+            width: 100%;
+        }
+        
+        .showcase-item {
+            flex: 1;
+            display: flex;
+            align-items: stretch;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            position: relative;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            overflow: hidden;
+        }
+        
+        .showcase-item::before {
+            content: "";
+            position: absolute;
+            z-index: 20;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.75);
+            transition: all 0.35s ease;
+        }
+        
+        .showcase-item.active {
+            flex: 6;
+            cursor: default;
+        }
+        
+        .showcase-item.active::before {
+            background: linear-gradient(180deg, rgba(15, 15, 15, 0) 0%, rgba(17, 17, 17, 0.9) 100%);
+        }
+
+        /* Highlight face for primary student-life image: shift framing and lighten overlay */
+        .showcase-item.focus-face {
+            /* Zoom out to show more of the whole image */
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-color: #0b1220; /* dark background to fill any gaps */
+        }
+
+        .showcase-item.focus-face::before {
+            /* slightly lighter overlay so faces are visible but text stays readable */
+            background: linear-gradient(180deg, rgba(15,15,15,0) 0%, rgba(17,17,17,0.55) 100%);
+        }
+
+        .showcase-item.focus-face.active::before {
+            /* when active, make overlay a bit lighter to reveal the face more */
+            background: linear-gradient(180deg, rgba(15,15,15,0) 0%, rgba(17,17,17,0.45) 100%);
+        }
+        
+        .showcase-item h3 {
+            font-weight: bold;
+            white-space: nowrap;
+            position: absolute;
+            z-index: 30;
+            opacity: 1;
+            top: 50%;
+            left: 50%;
+            transition: all 0.35s ease;
+            font-size: 24px;
+            text-transform: uppercase;
+            transform: translate(-50%, -50%) rotate(-90deg);
+            color: white;
+        }
+        
+        .showcase-item.active h3 {
+            opacity: 0;
+            top: 200%;
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 30;
+            opacity: 0;
+            align-self: flex-end;
+            width: 100%;
+            transition: all 0.35s 0.1s ease-out;
+        }
+        
+        .showcase-item.active .section-content {
+            opacity: 1;
+        }
+        
+        .section-content .inner {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.25s ease-out;
+            max-width: 520px;
+            color: white;
+        }
+        
+        .showcase-item.active .section-content .inner {
+            opacity: 1;
+        }
+        
+        .section-content .bio h2 {
+            font-size: 36px;
+            line-height: 40px;
+            margin-bottom: 16px;
+        }
+        
+        .section-content .bio p {
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 24px;
+        }
+        
+        @media only screen and (max-width: 1280px) {
+            .showcase-list {
+                flex-direction: column;
+            }
+            
+            .showcase-item h3 {
+                transform: translate(-50%, -50%) rotate(0deg);
+                font-size: 24px;
+            }
+            
+            .section-content .bio h2 {
+                font-size: 36px;
+                line-height: 40px;
+            }
         }
         .mission-card:hover {
             transform: translateY(-10px);
@@ -49,54 +305,10 @@
                 transform: scale(1);
             }
         }
-        </section>
-
-    <!-- Headteacher Message Section (single canonical copy) -->
-    <section id="headteacher-message" class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <!-- Text Panel (left) -->
-                <article class="text-panel" aria-labelledby="headteacher-title">
-                    <h2 id="headteacher-title" class="text-3xl md:text-4xl font-bold text-blue-900 kf-animated kf-fade-up kf-delay-0">Message From the Headteacher</h2>
-                    <div class="mt-4 space-y-4 kf-stagger">
-                        <p class="text-gray-700 kf-animated kf-fade-up kf-delay-1">Welcome to Katikamu SDA Secondary School – Wobulenzi. We hope this site keeps you updated with the exciting life of our school and supports our learners, parents and community.</p>
-
-                        <p class="text-gray-700 kf-animated kf-fade-up kf-delay-2">Our pupils are at the centre of everything we do. We encourage academic excellence, spiritual growth and character development in a safe and nurturing environment.</p>
-
-                        <p class="text-gray-700 kf-animated kf-fade-up kf-delay-3">We invite you to explore our website and join us in supporting the next generation of leaders.</p>
-
-                        <div class="mt-8 flex items-center space-x-4 kf-animated kf-slide-left kf-delay-4">
-                            <div class="flex-shrink-0">
-                                <div class="w-24 h-24 rounded-full bg-blue-100 border-4 border-yellow-400 shadow-lg overflow-hidden">
-                                    <img src="https://placehold.co/400x400/073e79/ffffff?text=DP" alt="Headteacher portrait" class="w-full h-full object-cover">
-                                </div>
-                            </div>
-                            <div class="flex-grow">
-                                <h3 class="text-xl font-bold text-blue-900">Mr. Dayo Paul</h3>
-                                <p class="text-gray-600">Head Teacher, Katikamu SDA SS, Wobulenzi</p>
-                                <div class="mt-2 flex items-center text-yellow-600">
-                                    <i data-feather="phone" class="w-4 h-4 mr-2"></i>
-                                    <a href="tel:+256773009376" class="hover:text-blue-900 transition">+256-773-009376</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Image Panel (right) -->
-                <div class="grid gap-6">
-                    <div class="image-panel h-64 md:h-72 rounded-lg bg-cover bg-center shadow-lg kf-animated kf-slide-right" role="img" aria-label="Students on campus" style="background-image: url('https://www.katikamusdass.ac.ug/wp-content/uploads/2015/10/DSC_9037-1500x630.jpg');"></div>
-                    <div class="p-6 bg-blue-50 rounded-lg shadow-md kf-animated kf-pop kf-delay-2">
-                        <blockquote class="text-blue-900 italic">"We are committed to nurturing every student's potential through academic excellence and Christian values."</blockquote>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
         .kf-delay-2{ animation-delay: 240ms; }
         .kf-delay-3{ animation-delay: 360ms; }
         .kf-delay-4{ animation-delay: 480ms; }
-
+        
         /* Stagger helper for container: add .kf-stagger and kf-child-* classes on children to auto-delay in markup if needed */
         .kf-stagger > * { opacity: 0; }
 
@@ -132,6 +344,9 @@
                 <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Facilities
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
+                <a href="gallery.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Gallery
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
                 <a href="studentlife.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Student Life
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
@@ -155,6 +370,7 @@
                 <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
                 <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
                 <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
+                <a href="gallery.html" class="text-gray-700 font-medium">Gallery</a>
                 <a href="studentlife.html" class="text-gray-700 font-medium">Student Life</a>
                 <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
                 <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
@@ -163,19 +379,38 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center bg-blue-900 overflow-hidden">
-        <div class="absolute inset-0 hero-overlay"></div>
-        <div class="absolute inset-0 bg-[url('https://www.katikamusdass.ac.ug/wp-content/uploads/2015/10/DSC_9037-1500x630.jpg')] bg-cover bg-center opacity-30"></div>
-        
-        <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up" data-aos-duration="1000">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+    <section class="relative h-screen flex items-center justify-center text-white bg-cover bg-center" style="background-image: url('https://www.katikamusdass.ac.ug/wp-content/uploads/2015/10/DSC_9037-1500x630.jpg');">
+        <div class="absolute inset-0 bg-gradient-to-b from-blue-900/60 to-blue-900/40"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
                 <span class="block">Katikamu SDA</span>
                 <span class="text-yellow-400">Secondary School</span>
             </h1>
-            <p class="text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            <!-- Morphing Text Component -->
+            <div id="container" class="mx-auto max-w-4xl">
+                <span id="text1"></span>
+                <span id="text2"></span>
+            </div>
+            <!-- SVG filter used by the morphing text (threshold) -->
+            <svg id="filters" aria-hidden="true">
+                <defs>
+                    <filter id="threshold">
+                        <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140"/>
+                    </filter>
+                </defs>
+            </svg>
+            <!-- SVG filter used by the morphing text (threshold) -->
+            <svg id="filters" aria-hidden="true">
+                <defs>
+                    <filter id="threshold">
+                        <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 255 -140"/>
+                    </filter>
+                </defs>
+            </svg>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
                 "Fear God and Strive" - Excellence in Education Since 1968
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="apply.html" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full transition duration-300 btn-glow pulse">
                     Apply Now
                 </a>
@@ -183,12 +418,14 @@
                     Learn More
                 </a>
             </div>
-        </div>
-        
-        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
-            <a href="#quick-stats" class="text-white animate-bounce">
-                <i data-feather="chevron-down" class="w-8 h-8"></i>
-            </a>
+
+            <div class="mt-16">
+                <a href="#quick-stats" class="text-white">
+                    <svg class="animate-bounce w-8 h-8 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -196,12 +433,12 @@
     <section id="quick-stats" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="counter-item bg-blue-50 p-8 rounded-lg text-center" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-4xl font-bold text-blue-900 mb-2">
-                        <span id="student-counter">0</span><span class="text-blue-900">+</span>
+                <div class="counter-item bg-blue-50 p-8 rounded-lg text-center morph-text" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl font-bold text-blue-900 mb-2 hover-morph">
+                        <span id="student-counter" class="gradient-text">0</span><span class="text-blue-900">+</span>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-800">Students</h3>
-                    <p class="text-gray-600 mt-2">Thriving in our learning community</p>
+                    <h3 class="text-xl font-semibold text-gray-800 wave-text">Students</h3>
+                    <p class="text-gray-600 mt-2 reveal-text">Thriving in our learning community</p>
                 </div>
                 
                 <div class="counter-item bg-blue-50 p-8 rounded-lg text-center" data-aos="fade-up" data-aos-delay="300">
@@ -219,56 +456,63 @@
         </div>
     </section>
 
-        <!-- From Student Life - Latest Blogs -->
-        <section id="studentlife-blogs" class="py-16 bg-gray-50">
+        <!-- From Student Life - Latest Stories -->
+        <section id="studentlife-stories" class="py-16 bg-gray-50">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-8" data-aos="fade-up">From Student Life — Latest Blogs</h2>
-                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Stories, tips and updates from our students. Click any card to read the full post on the Student Life page.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-900 mb-8" data-aos="fade-up">Student Life Stories</h2>
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Experience life at Katikamu through our students' stories</p>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up">
-                        <a href="studentlife.html#blog-1" class="block">
-                            <img src="images/academics.jpg" alt="A day in the dormitories" class="w-full h-40 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-blue-900">A Day in the Dormitory</h3>
-                                <p class="text-gray-600 mt-2 text-sm">Snapshots from students' daily life and routines at Katikamu.</p>
-                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                <div class="showcase-container">
+                    <ul class="showcase-list">
+                        <li class="showcase-item active focus-face" style="background-image: url('images/Nolan(Turnels).jpg');" data-index="0">
+                            <h3>Student Life</h3>
+                            <div class="section-content">
+                                <div class="inner">
+                                    <div class="bio">
+                                        <h2>A Day in the Life</h2>
+                                        <p>Experience the vibrant daily life of our students, from morning devotions to evening study sessions. Our structured routine helps students develop discipline while enjoying a balanced lifestyle.</p>
+                                        <a href="studentlife.html#daily-life" class="mt-4 inline-block bg-yellow-600 text-white px-6 py-2 rounded-full hover:bg-yellow-700 transition-all">Read More</a>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                    </article>
-
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
-                        <a href="studentlife.html#blog-2" class="block">
-                            <img src="images/schoolfees.jpg" alt="Student volunteer work" class="w-full h-40 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-blue-900">Community & Volunteer Work</h3>
-                                <p class="text-gray-600 mt-2 text-sm">How students give back and build leadership through service.</p>
-                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                        </li>
+                        <li class="showcase-item" style="background-image: url('images/students-1.jpg');" data-index="1">
+                            <h3>Community Service</h3>
+                            <div class="section-content">
+                                <div class="inner">
+                                    <div class="bio">
+                                        <h2>Making a Difference</h2>
+                                        <p>Our students actively participate in community service projects, from environmental conservation to supporting local orphanages. These experiences shape them into responsible citizens and future leaders.</p>
+                                        <a href="studentlife.html#community" class="mt-4 inline-block bg-yellow-600 text-white px-6 py-2 rounded-full hover:bg-yellow-700 transition-all">Learn More</a>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                    </article>
-
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
-                        <a href="studentlife.html#blog-3" class="block">
-                            <img src="images/academics.jpg" alt="Sports highlights" class="w-full h-40 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-blue-900">Sports Highlights</h3>
-                                <p class="text-gray-600 mt-2 text-sm">Recaps of recent matches and athletic achievements.</p>
-                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                        </li>
+                        <li class="showcase-item" style="background-image: url('images/1000223815.jpg');" data-index="2">
+                            <h3>Sports Excellence</h3>
+                            <div class="section-content">
+                                <div class="inner">
+                                    <div class="bio">
+                                        <h2>Athletic Achievement</h2>
+                                        <p>From football to athletics, our sports programs help students develop teamwork, leadership, and physical fitness. Discover our latest victories and the spirit of competition at Katikamu.</p>
+                                        <a href="studentlife.html#sports" class="mt-4 inline-block bg-yellow-600 text-white px-6 py-2 rounded-full hover:bg-yellow-700 transition-all">Explore Sports</a>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                    </article>
-
-                    <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
-                        <a href="studentlife.html#blog-4" class="block">
-                            <img src="images/schoolfees.jpg" alt="Creative arts" class="w-full h-40 object-cover">
-                            <div class="p-4">
-                                <h3 class="text-lg font-semibold text-blue-900">Creative Arts & Culture</h3>
-                                <p class="text-gray-600 mt-2 text-sm">Exhibitions, performances and the students behind them.</p>
-                                <span class="inline-block mt-3 text-yellow-600 font-semibold">Read more →</span>
+                        </li>
+                        <li class="showcase-item" style="background-image: url('images/academics.jpg');" data-index="3">
+                            <h3>Arts & Culture</h3>
+                            <div class="section-content">
+                                <div class="inner">
+                                    <div class="bio">
+                                        <h2>Creative Expression</h2>
+                                        <p>Our vibrant arts and culture program encourages students to express themselves through music, drama, dance, and visual arts. See how creativity flourishes at Katikamu.</p>
+                                        <a href="studentlife.html#arts" class="mt-4 inline-block bg-yellow-600 text-white px-6 py-2 rounded-full hover:bg-yellow-700 transition-all">View Gallery</a>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                    </article>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -466,7 +710,7 @@
         </div>
     </section>
 
-  
+
 
     
             
@@ -561,7 +805,11 @@
         <i data-feather="arrow-up"></i>
     </button>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script>
+        // Initialize animations
+
         // Initialize AOS
         AOS.init({
             once: true,
@@ -642,6 +890,70 @@
 
         // Feather icons
         feather.replace();
+
+        // Showcase functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const showcaseItems = document.querySelectorAll('.showcase-item');
+            
+            showcaseItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Remove active class from all items
+                    showcaseItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        // Text Animation Functions
+function initMorphAnimations() {
+    // Morph Text Observer
+    const morphObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                
+                // If it's a wave-text element, trigger the wave animation
+                if (entry.target.classList.contains('wave-text')) {
+                    entry.target.classList.add('animate');
+                }
+                
+                // If it's a reveal-text element, trigger the reveal animation
+                if (entry.target.classList.contains('reveal-text')) {
+                    entry.target.classList.add('reveal');
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Observe all animated elements
+    document.querySelectorAll('.morph-text, .wave-text, .reveal-text').forEach(element => {
+        morphObserver.observe(element);
+    });
+
+    // Initialize wave text animation
+    document.querySelectorAll('.wave-text').forEach(element => {
+        if (!element.classList.contains('wave-processed')) {
+            const text = element.textContent;
+            element.textContent = '';
+            text.split('').forEach((char, i) => {
+                const span = document.createElement('span');
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.style.animationDelay = `${i * 0.05}s`;
+                element.appendChild(span);
+            });
+            element.classList.add('wave-processed');
+        }
+    });
+}
+
+// Initialize text animations
+document.addEventListener('DOMContentLoaded', initMorphAnimations);
+
+// Re-run animations when new content is loaded
+document.addEventListener('contentChanged', initMorphAnimations);
     </script>
+    <script src="assets/js/morph-text.js"></script>
+    <script src="assets/js/morph.js"></script>
 </body>
 </html>

@@ -1,454 +1,239 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Gallery - Katikamu SDA Secondary School</title>
+    <meta name="description" content="Photo gallery showcasing life at Katikamu SDA Secondary School">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
+            background-color: #f8fafc;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
         }
-        .gallery-card {
-            transition: all 0.3s ease;
+
+        /* Showcase Styles */
+        .showcase-container {
+            width: 100%;
+            min-height: 450px;
+            height: 60vh;
+            overflow: hidden;
+            margin-bottom: 2rem;
         }
-        .gallery-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .category-tab {
-            transition: all 0.3s ease;
-        }
-        .category-tab.active {
-            background-color: #073e79;
-            color: white;
-        }
-        .category-tab:hover:not(.active) {
-            background-color: #f6c23e;
-            color: #073e79;
-        }
-    </style>
-</head>
-<body class="bg-gray-50">
-    <!-- Header (Same as main site) -->
-    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        
+        .showcase-list {
+            display: flex;
+            </section>
+
+                    <!-- Footer -->
+                    <footer class="bg-gray-900 text-white pt-12 pb-6">
+                            <div class="container mx-auto px-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                            <div>
+                                                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                                                    <p>Katikamu SDA Secondary School</p>
+                                                    <p>P.O. Box 23, Wobulenzi</p>
+                                                    <p>Uganda</p>
+                                            </div>
+                                            <div>
+                                                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                                                    <ul class="space-y-2">
+                                                            <li><a href="index.html" class="hover:text-yellow-500">Home</a></li>
+                                                            <li><a href="aboutus.html" class="hover:text-yellow-500">About Us</a></li>
+                                                            <li><a href="academics.html" class="hover:text-yellow-500">Academics</a></li>
+                                                    </ul>
+                                            </div>
+                                            <div>
+                                                    <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
+                                                    <div class="flex space-x-4">
+                                                            <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook"></i></a>
+                                                            <a href="#" class="hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
+                                                            <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                                                    </div>
+                                            </div>
+                                    </div>
+                                    <div class="border-t border-gray-800 mt-8 pt-6 text-center">
+                                            <p>&copy; 2025 Katikamu SDA SS. All rights reserved.</p>
+                                    </div>
+                            </div>
+                    </footer>
+
+                    </section>
+
+                            <!-- Footer -->
+                            <footer class="bg-gray-900 text-white pt-12 pb-6">
+                                    <div class="container mx-auto px-4">
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                                    <div>
+                                                            <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                                                            <p>Katikamu SDA Secondary School</p>
+                                                            <p>P.O. Box 23, Wobulenzi</p>
+                                                            <p>Uganda</p>
+                                                    </div>
+                                                    <div>
+                                                            <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                                                            <ul class="space-y-2">
+                                                                    <li><a href="index.html" class="hover:text-yellow-500">Home</a></li>
+                                                                    <li><a href="aboutus.html" class="hover:text-yellow-500">About Us</a></li>
+                                                                    <li><a href="academics.html" class="hover:text-yellow-500">Academics</a></li>
+                                                            </ul>
+                                                    </div>
+                                                    <div>
+                                                            <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
+                                                            <div class="flex space-x-4">
+                                                                    <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook"></i></a>
+                                                                    <a href="#" class="hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
+                                                                    <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                                                            </div>
+                                                    </div>
+                                            </div>
+                                            <div class="border-t border-gray-800 mt-8 pt-6 text-center">
+                                                    <p>&copy; 2025 Katikamu SDA SS. All rights reserved.</p>
+                                            </div>
+                                    </div>
+                            </footer>
+
+                            <script>
+                                    // Initialize AOS
+                                    AOS.init({ duration: 800, once: true });
+
+                                    // Mobile menu
+                                    document.getElementById('menu-toggle').addEventListener('click', function() {
+                                            document.getElementById('mobile-menu').classList.toggle('hidden');
+                                    });
+
+                                    // Feather icons
+                                    feather.replace();
+                            </script>
+                            <script src="assets/js/morph.js"></script>
+                    </body>
+                    </html>
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlP3Fb5Z1i1Cc6SBcshJH4SEo1VrbwJlLIQ&s" alt="Katikamu SDA Logo" class="h-12 mr-3">
-                <h1 class="text-xl md:text-2xl font-bold text-blue-900">Katikamu SDA <span class="text-yellow-600">Secondary</span></h1>
+                <h1 class="text-xl md:text-2xl font-bold text-blue-900">Katikamu SDA <span class="text-yellow-600">Gallery</span></h1>
             </div>
             
             <nav class="hidden md:flex space-x-8">
-                <a href="index.html" class="text-gray-700 font-medium hover:text-yellow-600 transition">Home</a>
-                <a href="aboutus.html" class="text-gray-700 font-medium hover:text-yellow-600 transition">About Us</a>
-                <a href="academics.html" class="text-gray-700 font-medium hover:text-yellow-600 transition">Academics</a>
-                <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition">Facilities</a>
-                <a href="studentlife.html" class="text-gray-700 font-medium hover:text-yellow-600 transition">Student Life</a>
-                <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition">News & Events</a>
-                <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition">Contact</a>
+                <a href="index.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="aboutus.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">About Us
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="academics.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Academics
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Facilities
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="studentlife.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Student Life
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">News & Events
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
             </nav>
             
-            <button class="md:hidden" id="menu-toggle">
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
                 <i data-feather="menu" class="text-blue-900"></i>
             </button>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-700 font-medium">Home</a>
+                <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
+                <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
+                <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
+                <a href="studentlife.html" class="text-gray-700 font-medium">Student Life</a>
+                <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
+                <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
+            </div>
+        </div>
     </header>
 
-    <!-- Gallery Header -->
-    <section class="py-12 bg-blue-900 text-white">
+    <!-- Gallery Title -->
+    <section class="py-12 bg-white">
         <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">School Photo Gallery</h1>
-            <p class="text-xl text-blue-100 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Capturing moments and memories from our vibrant school community
-            </p>
+            <h1 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4">School Gallery</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Explore the vibrant life at Katikamu SDA Secondary School through our photo collections</p>
         </div>
     </section>
 
-    <!-- Category Tabs -->
-    <div class="bg-white shadow-md">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex flex-wrap justify-center gap-4" id="category-tabs">
-                <button class="category-tab active px-6 py-2 rounded-full text-lg font-semibold" data-category="academic">
-                    Academic Events
-                </button>
-                <button class="category-tab px-6 py-2 rounded-full text-lg font-semibold" data-category="sports">
-                    Sports & Athletics
-                </button>
-                <button class="category-tab px-6 py-2 rounded-full text-lg font-semibold" data-category="cultural">
-                    Cultural Activities
-                </button>
-                <button class="category-tab px-6 py-2 rounded-full text-lg font-semibold" data-category="campus">
-                    Campus Life
-                </button>
-            </div>
-        </div>
-    </div>
+</style>
+let xPos = 0;
 
-    <!-- Gallery Grid -->
-    <section class="py-12">
-        <div class="container mx-auto px-4">
-            <!-- Academic Events -->
-            <div class="gallery-category" id="academic">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Academic Cards x20 -->
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Graduation+Day" alt="Graduation Ceremony" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Graduation Day 2025</h3>
-                            <p class="text-gray-600 mt-2">Celebrating our S6 graduates and their achievements</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Science+Fair" alt="Science Fair" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Science Fair</h3>
-                            <p class="text-gray-600 mt-2">Students showcasing innovative science projects</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Debate+Club" alt="Debate Competition" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Debate Competition</h3>
-                            <p class="text-gray-600 mt-2">Inter-school debate championship</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Math+Olympics" alt="Math Olympics" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Math Olympics</h3>
-                            <p class="text-gray-600 mt-2">Students excelling in mathematics competition</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Book+Fair" alt="Book Fair" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Annual Book Fair</h3>
-                            <p class="text-gray-600 mt-2">Promoting reading culture among students</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Lab+Work" alt="Laboratory Work" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Laboratory Sessions</h3>
-                            <p class="text-gray-600 mt-2">Hands-on science experiments</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Career+Day" alt="Career Day" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Career Day</h3>
-                            <p class="text-gray-600 mt-2">Professional guidance and counseling</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=IT+Class" alt="IT Class" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Computer Studies</h3>
-                            <p class="text-gray-600 mt-2">Digital literacy and programming</p>
-                        </div>
-                    </div>
-                    <!-- More cards can be added here -->
-                </div>
-            </div>
+gsap.timeline()
+    .set('.ring', { rotationY:180, cursor:'grab' }) //set initial rotationY so the parallax jump happens off screen
+    .set('.img',  { // apply transform rotations to each image
+      rotateY: (i)=> i*-36,
+      transformOrigin: '50% 50% 500px',
+      z: -500,
+      backgroundImage:(i)=>'url(https://picsum.photos/id/'+(i+32)+'/600/400/)',
+      backgroundPosition:(i)=>getBgPos(i),
+      backfaceVisibility:'hidden'
+    })    
+    .from('.img', {
+      duration:1.5,
+      y:200,
+      opacity:0,
+      stagger:0.1,
+      ease:'expo'
+    })
+    .add(()=>{
+      $('.img').on('mouseenter', (e)=>{
+        let current = e.currentTarget;
+        gsap.to('.img', {opacity:(i,t)=>(t==current)? 1:0.5, ease:'power3'})
+      })
+      $('.img').on('mouseleave', (e)=>{
+        gsap.to('.img', {opacity:1, ease:'power2.inOut'})
+      })
+    }, '-=0.5')
 
-            <!-- Sports & Athletics -->
-            <div class="gallery-category hidden" id="sports">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Sports Cards x20 -->
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Sports+Day" alt="Annual Sports Day" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Annual Sports Day</h3>
-                            <p class="text-gray-600 mt-2">Students competing in track and field events</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Football" alt="Football Match" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Football Tournament</h3>
-                            <p class="text-gray-600 mt-2">Inter-house football championship</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Basketball" alt="Basketball Game" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Basketball Match</h3>
-                            <p class="text-gray-600 mt-2">School team in regional finals</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Athletics" alt="Athletics" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Track & Field</h3>
-                            <p class="text-gray-600 mt-2">100m sprint finals</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Volleyball" alt="Volleyball" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Volleyball Tournament</h3>
-                            <p class="text-gray-600 mt-2">Girls' team victory celebration</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Swimming" alt="Swimming" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Swimming Gala</h3>
-                            <p class="text-gray-600 mt-2">Annual swimming competition</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Table+Tennis" alt="Table Tennis" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Table Tennis</h3>
-                            <p class="text-gray-600 mt-2">Indoor sports championship</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Sports+Awards" alt="Sports Awards" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Sports Awards</h3>
-                            <p class="text-gray-600 mt-2">Recognizing athletic excellence</p>
-                        </div>
-                    </div>
-                    <!-- More cards can be added here -->
-                </div>
-            </div>
+$(window).on('mousedown touchstart', dragStart);
+$(window).on('mouseup touchend', dragEnd);
+      
 
-            <!-- Cultural Activities -->
-            <div class="gallery-category hidden" id="cultural">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Cultural Cards x20 -->
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Cultural+Day" alt="Cultural Day Celebration" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Cultural Day Celebration</h3>
-                            <p class="text-gray-600 mt-2">Showcasing traditional dances and performances</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Traditional+Dance" alt="Traditional Dance" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Traditional Dance</h3>
-                            <p class="text-gray-600 mt-2">Students performing cultural dances</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Music+Festival" alt="Music Festival" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Music Festival</h3>
-                            <p class="text-gray-600 mt-2">Annual music competition</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Art+Exhibition" alt="Art Exhibition" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Art Exhibition</h3>
-                            <p class="text-gray-600 mt-2">Student artwork showcase</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Drama+Club" alt="Drama Performance" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Drama Performance</h3>
-                            <p class="text-gray-600 mt-2">School play production</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Poetry" alt="Poetry Recital" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Poetry Recital</h3>
-                            <p class="text-gray-600 mt-2">Literary arts showcase</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Choir" alt="School Choir" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">School Choir</h3>
-                            <p class="text-gray-600 mt-2">Choral performance event</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Cultural+Fashion" alt="Cultural Fashion" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Cultural Fashion Show</h3>
-                            <p class="text-gray-600 mt-2">Traditional attire showcase</p>
-                        </div>
-                    </div>
-                    <!-- More cards can be added here -->
-                </div>
-            </div>
+function dragStart(e){ 
+  if (e.touches) e.clientX = e.touches[0].clientX;
+  xPos = Math.round(e.clientX);
+  gsap.set('.ring', {cursor:'grabbing'})
+  $(window).on('mousemove touchmove', drag);
+}
 
-            <!-- Campus Life -->
-            <div class="gallery-category hidden" id="campus">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <!-- Campus Life Cards x20 -->
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Campus+Life" alt="Daily Campus Life" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Campus Life</h3>
-                            <p class="text-gray-600 mt-2">Students enjoying daily activities</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Library" alt="Library" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">School Library</h3>
-                            <p class="text-gray-600 mt-2">Students studying and researching</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Dining+Hall" alt="Dining Hall" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Dining Hall</h3>
-                            <p class="text-gray-600 mt-2">Community meals and fellowship</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Dormitory" alt="Dormitory" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Dormitory Life</h3>
-                            <p class="text-gray-600 mt-2">Student accommodation facilities</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Chapel" alt="Chapel" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Chapel Service</h3>
-                            <p class="text-gray-600 mt-2">Spiritual growth and worship</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Garden" alt="School Garden" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">School Garden</h3>
-                            <p class="text-gray-600 mt-2">Environmental education</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Computer+Lab" alt="Computer Lab" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">Computer Lab</h3>
-                            <p class="text-gray-600 mt-2">Technology and learning</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card bg-white rounded-lg overflow-hidden shadow-md" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://placehold.co/400x300/073e79/ffffff?text=Assembly" alt="School Assembly" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-lg font-semibold text-blue-900">School Assembly</h3>
-                            <p class="text-gray-600 mt-2">Morning devotion and announcements</p>
-                        </div>
-                    </div>
-                    <!-- More cards can be added here -->
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-12 pb-6">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4 text-yellow-400">Katikamu SDA</h3>
-                    <p class="mb-4">Providing quality Christian education since 1968.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i data-feather="facebook"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i data-feather="twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i data-feather="instagram"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="aboutus.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
-                        <li><a href="academics.html" class="text-gray-400 hover:text-white transition">Academics</a></li>
-                        <li><a href="facilities.html" class="text-gray-400 hover:text-white transition">Facilities</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
-                    <ul class="space-y-2">
-                        <li class="flex items-center">
-                            <i data-feather="map-pin" class="mr-2 w-4 h-4"></i>
-                            <span>P.O. Box 123, Wobulenzi, Uganda</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="phone" class="mr-2 w-4 h-4"></i>
-                            <span>+256 773 009376</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-feather="mail" class="mr-2 w-4 h-4"></i>
-                            <span>info@katikamusda.ac.ug</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-                    <p class="text-gray-400 mb-4">Stay updated with our latest news and events.</p>
-                    <form class="flex">
-                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-lg w-full">
-                        <button class="bg-yellow-600 px-4 py-2 rounded-r-lg hover:bg-yellow-700 transition">
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 pt-6 text-center text-gray-400">
-                <p>&copy; 2025 Katikamu SDA Secondary School. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+function drag(e){
+  if (e.touches) e.clientX = e.touches[0].clientX;    
 
-    <script>
-        // Initialize AOS
-        AOS.init({
-            once: true,
-            duration: 800,
-        });
+  gsap.to('.ring', {
+    rotationY: '-=' +( (Math.round(e.clientX)-xPos)%360 ),
+    onUpdate:()=>{ gsap.set('.img', { backgroundPosition:(i)=>getBgPos(i) }) }
+  });
+  
+  xPos = Math.round(e.clientX);
+}
 
-        // Mobile menu toggle
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
 
-        // Category tabs functionality
-        document.querySelectorAll('.category-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Hide all gallery categories
-                document.querySelectorAll('.gallery-category').forEach(cat => cat.classList.add('hidden'));
-                // Show selected category
-                document.getElementById(this.dataset.category).classList.remove('hidden');
-            });
-        });
+function dragEnd(e){
+  $(window).off('mousemove touchmove', drag);
+  gsap.set('.ring', {cursor:'grab'});
+}
 
-        // Initialize Feather icons
-        feather.replace();
-    </script>
-</body>
-</html>
+
+function getBgPos(i){ //returns the background-position string to create parallax movement in each image
+  return ( 100-gsap.utils.wrap(0,360,gsap.getProperty('.ring', 'rotationY')-180-i*36)/360*500 )+'px 0px';
+}
