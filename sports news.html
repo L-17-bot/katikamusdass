@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Katikamu SDA — Sports News</title>
+
+  <!-- Tailwind (site uses Tailwind) + Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg-1: #ffffff;        /* white */
+      --bg-2: #f1f8ff;        /* very pale blue */
+      --card-start: #ffffff;
+      --card-end: #fbfdff;
+      --accent-1: #2563eb;    /* blue-600 */
+      --accent-2: #1e40af;    /* blue-800 */
+      --accent-soft: #e6f0ff; /* soft blue for pills */
+      --muted: #0b2545;       /* dark blue text */
+      --muted-2: #475569;    /* secondary muted */
+      --radius: 14px;
+      --glass: rgba(37,99,235,0.06);
+    }
+
+    /* Base reset & site fonts */
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:'Open Sans', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg,var(--bg-1), var(--bg-2));
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:24px;
+    }
+
+    /* Container */
+    .site-container{
+      max-width:1100px;
+      margin:0 auto;
+      background: linear-gradient(180deg,var(--card-start), var(--card-end));
+      border-radius: calc(var(--radius) + 6px);
+      padding:22px;
+      box-shadow: 0 8px 30px rgba(14,30,60,0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+      border:1px solid rgba(30,64,175,0.06);
+    }
+
+    h1,h2,h3{font-family:'Poppins', sans-serif; color:var(--muted)}
+    h1{letter-spacing:0.4px}
+    .crest{
+      width:68px;height:68px;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:grid;place-items:center;color:#fff;font-weight:800;font-size:26px;transform:rotate(-6deg);
+      box-shadow: 0 8px 24px rgba(30,64,175,0.12);
+    }
+
+    /* Card styles */
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.98), rgba(249,252,255,0.98));
+      border-radius:12px;
+      padding:14px;
+      border:1px solid rgba(30,64,175,0.06);
+      box-shadow: 0 6px 18px rgba(14,30,60,0.04);
+    }
+
+    /* Buttons */
+    .btn-primary{
+      background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+      color:#fff;
+      padding:.55rem 1rem;
+      border-radius:999px;
+      font-weight:600;
+      display:inline-flex;
+      gap:.6rem;
+      align-items:center;
+      transition:transform .12s ease, box-shadow .12s ease;
+      text-decoration:none;
+      box-shadow: 0 6px 18px rgba(30,64,175,0.12);
+      border: none;
+    }
+    .btn-primary:hover{transform:translateY(-3px); box-shadow: 0 10px 30px rgba(30,64,175,0.16)}
+    .btn-secondary{
+      background: linear-gradient(180deg, var(--accent-soft), rgba(255,255,255,0.9));
+      color:var(--muted-2);
+      padding:.5rem .9rem;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      border:1px solid rgba(30,64,175,0.05);
+    }
+
+    /* Pills / tags */
+    .pill{
+      background: var(--accent-soft);
+      color:var(--accent-2);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:0.85rem;
+      border:1px solid rgba(30,64,175,0.04);
+    }
+
+    /* Gallery + lightbox */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+    .gallery img{width:100%;height:90px;object-fit:cover;border-radius:8px;cursor:pointer;border:1px solid rgba(14,30,60,0.04);transition:transform .22s,box-shadow .22s}
+    .gallery img:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(14,30,60,0.06)}
+
+    .lb-backdrop{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(6,21,48,0.6);z-index:2000;padding:20px}
+    .lb-backdrop.active{display:flex}
+    .lb-img{max-width:1100px;max-height:90vh;border-radius:10px;box-shadow:0 30px 80px rgba(6,21,48,0.6)}
+
+    @media (max-width:980px){ .gallery img{height:80px} .hero-grid{grid-template-columns:1fr} }
+    @media (max-width:640px){ .gallery{grid-template-columns:repeat(2,1fr)} body{padding:18px} }
+
+    /* small helpers */
+    .muted { color: var(--muted-2); }
+    .lead { color: var(--muted); font-weight:600; }
+  </style>
+</head>
+<body>
+  <!-- Announcement (white & blue) -->
+  <div class="w-full bg-gradient-to-r from-[#e6f0ff] to-[#f8fbff] text-[#0b2545] text-center py-2 px-4 mb-4 rounded-t-md border-b" style="border-color:rgba(30,64,175,0.06);">
+    <p class="text-sm">🎓 Admissions Open for 2026 — <a href="apply.html" class="underline font-semibold">Apply now</a></p>
+  </div>
+
+  <main class="site-container" role="main">
+    <!-- Header row -->
+    <header class="flex items-center justify-between gap-4 mb-4">
+      <div class="flex items-center gap-4">
+        <div class="crest" aria-hidden="true">KS</div>
+        <div>
+          <h1 class="text-2xl">Katikamu SDA — Sports News</h1>
+          <div class="text-sm muted">Passion • Teamwork • Victory</div>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <a href="news.html" class="btn-secondary">Back to News</a>
+      </div>
+    </header>
+
+    <!-- Buttons (category / quick actions) -->
+    <div class="flex flex-wrap gap-3 mb-6">
+      <a href="#" class="btn-primary" aria-pressed="true">All Sports</a>
+      <a href="#football" class="btn-secondary">Images</a>
+    </div>
+
+    <!-- Hero / Intro -->
+    <section class="hero-grid grid grid-cols-[1fr_320px] gap-6 md:gap-8">
+      <div class="card">
+        <p class="text-lg lead"><strong>Sports at Katikamu SDA</strong> are more than competitions — they teach discipline, teamwork and growth. From the pitch to the track, our students display determination and school spirit.</p>
+
+        <div class="mt-4 flex gap-3 flex-wrap">
+          <span class="pill">Season 2025</span>
+          <span class="pill">District Champions</span>
+          <span class="pill">Training Schedules</span>
+        </div>
+
+        <div class="mt-6 highlights grid md:grid-cols-3 gap-3">
+          <div class="card">
+            <h3 class="text-yellow-600 mb-2">🏆 Football Victory</h3>
+            <p class="text-sm muted">Senior boys won the district final 3–1.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-yellow-600 mb-2">🏐 Netball Brilliance</h3>
+            <p class="text-sm muted">Girls qualified for regionals.</p>
+          </div>
+          <div class="card">
+            <h3 class="text-yellow-600 mb-2">🏃 Athletics Day</h3>
+            <p class="text-sm muted">Record sprints and spirited performances.</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h4 class="text-yellow-600 mb-2">Upcoming Events</h4>
+        <ul class="text-sm muted space-y-2">
+          <li>Interhouse Sports — Dec 5</li>
+          <li>District Trials — Jan 10</li>
+          <li>Athletics Workshop — Jan 25</li>
+        </ul>
+
+        <div class="mt-4 text-sm muted">
+          <strong>Contact:</strong><br>
+          Sports Dept — <a href="mailto:sports@katikamu.edu" class="text-[#2563eb]">sports@katikamu.edu</a>
+        </div>
+
+      </aside>
+    </section>
+
+    <!-- Main content + sidebar -->
+    <section class="grid md:grid-cols-[1fr_320px] gap-6 mt-6">
+      <article class="card">
+        <h2 id="football" class="text-xl" style="color:var(--accent-2)">Football — Season Review</h2>
+        <p class="muted">Our senior football team demonstrated grit and skill throughout the season, culminating in the district championship. Coaches emphasise tactical awareness and fitness.</p>
+
+        <blockquote class="mt-4 border-l-4 pl-4 text-gray-700 italic" style="border-color:var(--accent-1)">“We train hard, play fair and respect the game.” — Coach Samuel N.</blockquote>
+
+        <h3 id="netball" class="mt-6 text-yellow-600">Netball Highlights</h3>
+        <p class="muted">Girls progressed to regionals after a disciplined campaign and excellent teamwork.</p>
+
+        <h3 id="athletics" class="mt-6 text-yellow-600">Athletics</h3>
+        <p class="muted">Track athletes posted competitive times and improved personal bests during Athletics Day.</p>
+
+        <h3 id="gallery" class="mt-6 text-yellow-600">Gallery</h3>
+        <p class="text-sm muted mb-2">Click images to enlarge. Replace placeholders with real photos in assets/images/</p>
+        <div class="gallery" aria-label="Sports gallery">
+          <img src="academics.jpg" alt="Football match" data-full="https://via.placeholder.com/1400x900?text=Football+Match+Large">
+          <img src="a3.png" alt="Netball team" data-full="https://via.placeholder.com/1400x900?text=Netball+Team+Large">
+          <img src="a4.png" alt="Athletics event" data-full="https://via.placeholder.com/1400x900?text=Athletics+Event+Large">
+          <img src="a5.png" alt="Training session" data-full="https://via.placeholder.com/1400x900?text=Training+Session+Large">
+          <img src="a3.png" alt="Victory pose" data-full="https://via.placeholder.com/1400x900?text=Victory+Pose+Large">
+          <img src="simpy.jpg" alt="Medal ceremony" data-full="https://via.placeholder.com/1400x900?text=Medal+Ceremony+Large">
+        </div>
+      </article>
+
+      <aside class="flex flex-col gap-4">
+        <div class="card">
+          <h4 class="text-yellow-600">Coach's Corner</h4>
+          <p class="muted text-sm">Tips: focus on endurance, practice passing drills daily, and balance training with rest.</p>
+        </div>
+    </aside>
+    </section>
+
+    <footer class="mt-6 text-center text-gray-600 text-sm">
+      <div>© Katikamu SDA School — Sports Department</div>
+      <div class="mt-2">Share match photos: <a href="mailto:sports@katikamu.edu" class="text-[#2563eb]">sports@katikamu.edu</a></div>
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lb-backdrop" id="lightbox" role="dialog" aria-hidden="true" aria-label="Image preview" tabindex="-1">
+    <img class="lb-img" id="lb-img" src="" alt="Preview">
+  </div>
+
+  <script>
+    (function(){
+      const gallery = document.querySelectorAll('.gallery img');
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+
+      function openLightbox(src, alt){
+        lbImg.src = src;
+        lbImg.alt = alt || 'Preview image';
+        lb.classList.add('active');
+        lb.setAttribute('aria-hidden','false');
+        lb.focus();
+      }
+      function closeLightbox(){
+        lb.classList.remove('active');
+        lbImg.src = '';
+        lb.setAttribute('aria-hidden','true');
+      }
+
+      gallery.forEach(img => {
+        img.addEventListener('click', () => {
+          const full = img.dataset.full || img.src;
+          openLightbox(full, img.alt);
+        });
+        img.setAttribute('tabindex','0');
+        img.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            const full = img.dataset.full || img.src;
+            openLightbox(full, img.alt);
+          }
+        });
+      });
+
+      lb.addEventListener('click', (e) => {
+        if(e.target === lb || e.target === lbImg) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>
