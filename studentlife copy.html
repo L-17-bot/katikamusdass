@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Life - Katikamu SDA Secondary School</title>
+    <meta name="description" content="Experience student life at Katikamu SDA Secondary School">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .activity-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Announcement Bar -->
+    <div class="bg-blue-900 text-white text-center py-2 px-4">
+        <p class="text-sm md:text-base">🎓 Admissions Open for 2026! <a href="apply.html" class="font-semibold underline ml-2">Apply Now</a></p>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-md transition-all duration-300">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlP3Fb5Z1i1Cc6SBcshJH4SEo1VrbwJlLIQ&s" alt="Katikamu SDA Logo" class="h-12 mr-3">
+                <h1 class="text-xl md:text-2xl font-bold text-blue-900">Katikamu SDA <span class="text-yellow-600">Secondary</span></h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="aboutus.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">About Us
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="academics.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Academics
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Facilities
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="gallery.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Gallery
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="studentlife.html" class="text-blue-900 font-medium hover:text-yellow-600 transition relative group">Student Life
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">News & Events
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Contact
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+            
+            <button class="md:hidden focus:outline-none" id="menu-toggle">
+                <i data-feather="menu" class="text-blue-900"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-700 font-medium">Home</a>
+                <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
+                <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
+                <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
+                <a href="gallery.html" class="text-gray-700 font-medium">Gallery</a>
+                <a href="studentlife.html" class="text-blue-900 font-medium">Student Life</a>
+                <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
+                <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] bg-[url('https://images.unsplash.com/photo-1523240795612-9a054b0db644')] bg-cover bg-center">
+        <div class="absolute inset-0 bg-blue-900/70"></div>
+        <div class="relative container mx-auto px-4 h-full flex items-center">
+            <div class="text-white max-w-2xl" data-aos="fade-right">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Student Life at Katikamu</h1>
+                <p class="text-lg md:text-xl opacity-90">Experience a rich blend of academic excellence, spiritual growth, and exciting extracurricular activities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog: How to Stay Focused in Class -->
+    <article id="blog-stay-focused" class="py-16 bg-white" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">How to Stay Focused in Class: Unlocking Your Potential with Uganda’s New Curriculum</h2>
+            <p class="text-gray-600 mb-6">Hello, awesome students! If you’ve been sitting in class wondering how to keep your eyes on the ball (and not on your phone or the clock), you’re not alone. The new curriculum in Uganda is more dynamic and hands-on than ever before, which means staying focused has become even more important—and a little trickier. But guess what? You can totally master this learning game, and I’m here to show you how.</p>
+
+            <p class="mb-4">This week, we’re diving into practical, cool ways to keep that concentration strong throughout your school day. Whether you’re in PLE or prepping for your UCE, these tips will help you absorb knowledge faster, enjoy lessons more, and actually get excited about what you’re learning. Ready? Let’s jump right into it.</p>
+
+            <h3 class="text-xl font-semibold mt-6">Understanding the New Curriculum: Why Focus Matters More Than Ever</h3>
+            <p class="text-gray-700 mb-4">Uganda’s new curriculum isn’t just about memorizing facts—it’s about skills, creativity, and thinking critically. It asks you to participate, discuss, and solve real-world problems. Sounds exciting, right? But it also means if your mind starts wandering, you’ll miss out on the juicy parts of learning. The key is staying mentally present so you can catch every aha moment.</p>
+
+            <h3 class="text-xl font-semibold mt-4">5 Proven Focus Hacks Every Ugandan Student Needs</h3>
+            <ol class="list-decimal list-inside text-gray-700 mt-3 space-y-3">
+                <li><strong>Get Your Body Ready:</strong> Before class even starts, a quick stretch or a few deep breaths can wake up your brain. It’s like telling your body, “Hey, it’s go-time!”</li>
+                <li><strong>Break It Down:</strong> The new curriculum covers a lot, so try focusing on one chunk at a time—one subject, one concept, or even one paragraph. When you break lessons into bite-sized pieces, they feel way less overwhelming.</li>
+                <li><strong>Use Your Pen as a Secret Weapon:</strong> Taking neat notes or doodling key ideas keeps your hands busy and your mind alert. Plus, you’ll have notes to review later instead of trying to remember everything.</li>
+                <li><strong>Ask Questions—Always:</strong> If you’re unsure or curious, speak up! Participating activates your brain and helps you stay involved. Remember, nobody learns by just sitting quietly and zoning out.</li>
+                <li><strong>Snack Smart and Stay Hydrated:</strong> A hungry brain can’t focus. So when possible, have a healthy snack and drink water before class. In Uganda, fresh fruits like mangoes or pawpaw are great natural brain boosters.</li>
+            </ol>
+
+            <h3 class="text-xl font-semibold mt-6">Bonus Tip: Create Your Personal Focus Ritual</h3>
+            <p class="text-gray-700 mb-4">Some of the most successful students develop little habits that signal to their brain it’s time to learn. Maybe it’s organizing your desk before class or reviewing yesterday’s notes for five minutes. Find your own ritual and make it part of your routine—it’s like a superpower switch for your attention.</p>
+
+            <p class="text-gray-700 mb-4">Also, don’t get discouraged if your focus drifts sometimes. It happens to everyone, even the best students. What matters is that you try again each day.</p>
+
+            <h3 class="text-xl font-semibold mt-6">Why Staying Focused Could Change Your Story</h3>
+            <p class="text-gray-700 mb-4">This isn’t just about getting good grades—although that’s a huge plus! When you stay focused, you really understand subjects, build confidence, and develop skills that will serve you well beyond school. You might become the next scientist, teacher, journalist, or leader Uganda proudly celebrates.</p>
+
+            <p class="text-gray-700">So why not give these tips a shot? Your future self will thank you.</p>
+            <p class="text-gray-700 mt-6">Thanks for hanging out and reading—next week, we’ll explore cool ways to turn your classroom notes into study gold. Until then, keep that focus sharp and your spirit brighter. Remember, we’re all in this learning journey together!</p>
+        </div>
+    </article>
+
+    <!-- Student Life Categories -->
+    <section class="py-16 bg-white" style="background-color: rgb(143, 211, 231);">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Clubs & Societies -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300" data-aos="fade-up" data-aos-duration="1000">
+                    <i class="fas fa-users text-3xl text-blue-900 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Clubs & Societies</h3>
+                    <p class="text-gray-600 mb-4">Join various academic, cultural, and special interest clubs.</p>
+                    <ul class="text-gray-700 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Science Club</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Young Farmers</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Path Finder Club</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Interact Club</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Science Club</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Debate Society</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>EduTech Club</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Good Samaritan Club</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Music & Drama</li>
+                </div>
+
+                <!-- Sports & Recreation -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100" class="list">
+                    <i class="fas fa-futbol text-3xl text-blue-900 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Sports & Recreation</h3>
+                    <p class="text-gray-600 mb-4">Develop teamwork and leadership through sports.</p>
+                    <ul class="text-gray-700 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Football</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Basketball</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Volley Ball</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Board Games</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Rugby</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Athletics</li>
+                    </ul>
+                </div>
+
+                <!-- Spiritual Life -->
+                <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200" class="list">
+                    <i class="fas fa-church text-3xl text-blue-900 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Spiritual Life</h3>
+                    <p class="text-gray-600 mb-4">Grow in faith through worship and service.</p>
+                    <ul class="text-gray-700 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Morning Devotions</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Bible Study</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Evenimg devotions</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Community Service</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Schedule -->
+    <section id="school-schedule" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">School Schedule</h2>
+            <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="50">A typical weekday timetable for our students — boarding and day students follow a structured routine that balances worship, lessons and recreation.</p>
+
+            <div class="overflow-x-auto" data-aos="fade-up" data-aos-delay="100">
+                <table class="min-w-full bg-white rounded-lg shadow-sm">
+                    <thead class="bg-blue-900 text-white">
+                        <tr>
+                            <th class="py-3 px-4 text-left">Time</th>
+                            <th class="py-3 px-4 text-left">Monday - Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">04:30 – 05:00</td>
+                            <td class="py-3 px-4">Wake up & preparations</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">05:00 – 06:00</td>
+                            <td class="py-3 px-4">Prep / Morning study</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">06:00 – 06:30</td>
+                            <td class="py-3 px-4">Prayers</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">06:30 – 07:00</td>
+                            <td class="py-3 px-4">Breakfast / Break (30 mins)</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">07:00 – 09:40</td>
+                            <td class="py-3 px-4">Lessons</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">09:40 – 10:10</td>
+                            <td class="py-3 px-4">Mid-morning break</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">10:10 – 12:50</td>
+                            <td class="py-3 px-4">Lessons resume</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">12:50 – 13:50</td>
+                            <td class="py-3 px-4">Lunch (1 hour)</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">13:50 – 15:10</td>
+                            <td class="py-3 px-4">Lessons resume</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">16:00 – 17:30</td>
+                            <td class="py-3 px-4">Personal admin & supper</td>
+                        </tr>
+                        <tr class="border-b hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">18:00 – 18:40</td>
+                            <td class="py-3 px-4">Evening prayers</td>
+                        </tr>
+                        <tr class="hover:bg-blue-50">
+                            <td class="py-3 px-4 font-medium">19:00 – 21:00</td>
+                            <td class="py-3 px-4">Preps / Study period</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clubs & Societies -->
+    <section id="clubs" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold" data-aos="fade-up">Clubs & Societies</h2>
+                <p class="text-gray-600" data-aos="fade-up" data-aos-delay="50">Explore our active student clubs. Click a card to learn more or join.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up">
+                    <img src="a7.png.jpg" alt="Sports Club" class="w-full h-44 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Sports Club</h3>
+                        <p class="text-gray-600 text-sm">Football, basketball, athletics and more — building teamwork and fitness.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="50">
+                    <img src="a6.jpg" alt="Science Club" class="w-full h-44 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Science & Robotics</h3>
+                        <p class="text-gray-600 text-sm">Hands-on experiments and tech projects to inspire future scientists and engineers.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="100">
+                    <img src="simpy.jpg" alt="Music & Drama" class="w-full h-44 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Music & Drama</h3>
+                        <p class="text-gray-600 text-sm">Performances, rehearsals and creative workshops throughout the year.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="150">
+                    <img src="a5.png" alt="Debate Club" class="w-full h-44 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Debate Club</h3>
+                        <p class="text-gray-600 text-sm">Develop confidence and public speaking skills in local and national competitions.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="200">
+                    <img src="a8.jpg" alt="Young Farmers" class="w-full h-44 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Young Farmers</h3>
+                        <p class="text-gray-600 text-sm">Practical agriculture projects and environmental stewardship initiatives.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition" data-aos="fade-up" data-aos-delay="250">
+                    <img src="a4.png" alt="Path Finder Club" class="w-full h-44 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-semibold">Path Finder Club</h3>
+                        <p class="text-gray-600 text-sm">Outdoor skills, leadership and community service projects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expanded Student Life Sections -->
+    <section id="student-life-hub" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Student Life Hub</h2>
+
+            <p class="text-center text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="50">Explore resources, clubs, events and daily life at Katikamu. Each area below contains quick links, contact points and downloadable resources where available.</p>
+
+            <div class="space-y-10">
+                <!-- 1. Academic Support -->
+                <div id="academics-support" class="bg-blue-50 p-6 rounded-lg shadow-sm" data-aos="fade-up">
+                    <h3 class="text-2xl font-semibold mb-3">1. Academic Support</h3>
+                    <p class="text-gray-700 mb-3">Helps students succeed in class with structured support: homework schedules, revision resources and study groups.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Homework schedule & smart reminders (check noticeboard & pastoral channels)</li>
+                        <li>Revision packs and curated reading lists</li>
+                        <li>Class timetables and printable planners</li>
+                        <li>Study tips, note-taking guides and time management tools</li>
+                        <li>Academic clubs: Math, Science, ICT and Debate</li>
+                        <li>Peer study groups & scheduled past-paper practice</li>
+                    </ul>
+                    <div class="flex gap-3">
+                        <a href="#resources" class="text-blue-900 font-medium underline">Browse resources</a>
+                        <a href="mailto:academics@katikamu.example?subject=Academic%20Support%20enquiry" class="text-gray-700 hover:text-blue-900">Contact Academic Team</a>
+                    </div>
+                </div>
+
+                <!-- 2. Student Achievements -->
+                <div id="student-achievements" class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="50">
+                    <h3 class="text-2xl font-semibold mb-3">2. Student Achievements</h3>
+                    <p class="text-gray-700 mb-3">Highlighting success: awards, competitions and student projects that inspire the whole school.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Academic award winners & honour roll</li>
+                        <li>Sports trophies and match accolades</li>
+                        <li>Club achievements, debating & science fair winners</li>
+                        <li>Innovation projects and entrepreneurship highlights</li>
+                        <li>Star student spotlights (Student of the Week)</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">Nominate a student</a>
+                </div>
+
+                <!-- 3. Sports & Extra Activities -->
+                <div id="sports-activities" class="bg-blue-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-2xl font-semibold mb-3">3. Sports & Extra Activities</h3>
+                    <p class="text-gray-700 mb-3">Encouraging fitness, teamwork and performance through organised sport and creative shows.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>School team profiles and captain contacts</li>
+                        <li>Training schedules and match fixtures/results</li>
+                        <li>Sports news: football, netball, basketball, athletics</li>
+                        <li>Talent shows: music, dance and drama performances</li>
+                        <li>Art & creativity showcases</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">See fixtures & results</a>
+                </div>
+
+                <!-- 4. Clubs & Societies -->
+                <div id="clubs-societies" class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="text-2xl font-semibold mb-3">4. Clubs & Societies</h3>
+                    <p class="text-gray-700 mb-3">Active clubs provide learning, leadership and fun. Each club page includes mission, leaders, activities, achievements and photos.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold">ICT Club</h4>
+                            <p class="text-sm text-gray-600 mb-2">Mission: Build digital skills. Leader: Mr. Tech</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Debate & Writers</h4>
+                            <p class="text-sm text-gray-600 mb-2">Mission: Improve public speaking and writing. Leader: Ms. Orator</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Music & Drama</h4>
+                            <p class="text-sm text-gray-600 mb-2">Activities: Rehearsals, performances and workshops</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Environment & Health Clubs</h4>
+                            <p class="text-sm text-gray-600 mb-2">Community clean-ups, wellness campaigns</p>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-gray-700">Want to join a club? Email <a href="mailto:clubs@katikamu.example" class="text-blue-900 underline">clubs@katikamu.example</a> with the club name and your details.</p>
+                </div>
+
+                <!-- 5. School Life & Culture -->
+                <div id="school-life-culture" class="bg-blue-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-semibold mb-3">5. School Life & Culture</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Uniform guidelines and expectations</li>
+                        <li>Dormitory life: routines and respect guidelines</li>
+                        <li>Classroom culture and daily routines</li>
+                        <li>Meals & cafeteria menus</li>
+                        <li>Campus tour & interactive map (coming soon)</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">View uniform & dorm rules</a>
+                </div>
+
+                <!-- 6. Guidance, Wellness & Support -->
+                <div id="guidance-wellness" class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="250">
+                    <h3 class="text-2xl font-semibold mb-3">6. Guidance, Wellness & Support</h3>
+                    <p class="text-gray-700 mb-3">Safe, general guidance focused on healthy habits, time management and personal development.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Healthy habits & hygiene tips</li>
+                        <li>Time-management and study–life balance ideas</li>
+                        <li>Anti-bullying awareness programs</li>
+                        <li>Basic first-aid guidance for common school injuries</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">Guidance resources</a>
+                </div>
+
+                <!-- 7. Leadership & Student Governance -->
+                <div id="leadership-governance" class="bg-blue-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-2xl font-semibold mb-3">7. Leadership & Student Governance</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Prefects and class leaders: roles & contact points</li>
+                        <li>Student committees and responsibilities</li>
+                        <li>Ongoing student-led projects and how to get involved</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">Meet the prefects</a>
+                </div>
+
+                <!-- 8. Events & School Activities -->
+                <div id="events-activities" class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="350">
+                    <h3 class="text-2xl font-semibold mb-3">8. Events & School Activities</h3>
+                    <p class="text-gray-700 mb-3">A lively calendar of cultural days, fairs, competitions and celebrations.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Cultural days & music festivals</li>
+                        <li>Science fairs, spelling bees & ICT expos</li>
+                        <li>Sports day & chapel programs</li>
+                        <li>Prefect campaigns & end-of-term celebrations</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">Event calendar</a>
+                </div>
+
+                <!-- 9. Resources Section -->
+                <div id="resources" class="bg-blue-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-2xl font-semibold mb-3">9. Resources</h3>
+                    <p class="text-gray-700 mb-3">Downloadable notes, past exam papers and helpful links to support study and revision.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li><a href="#" class="underline text-blue-900">Download: Past Papers (placeholder)</a></li>
+                        <li><a href="#" class="underline text-blue-900">Download: Revision Notes (placeholder)</a></li>
+                        <li><a href="#" class="underline text-blue-900">Term Calendar & School Policies (placeholder)</a></li>
+                    </ul>
+                    <p class="text-sm text-gray-600">Files will be uploaded to this section — contact <a href="mailto:resources@katikamu.example" class="text-blue-900 underline">resources@katikamu.example</a> to provide material.</p>
+                </div>
+
+                <!-- 10. Creativity & Innovation -->
+                <div id="creativity-innovation" class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="450">
+                    <h3 class="text-2xl font-semibold mb-3">10. Creativity & Innovation</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Student art gallery & photography pages</li>
+                        <li>Student-made apps and coding challenges</li>
+                        <li>Robotics & engineering mini-projects</li>
+                        <li>Entrepreneurship idea showcases</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">Submit a project</a>
+                </div>
+
+                <!-- 11. Community & Outreach -->
+                <div id="community-outreach" class="bg-blue-50 p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="500">
+                    <h3 class="text-2xl font-semibold mb-3">11. Community & Outreach</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Community service and charity visits</li>
+                        <li>Clean-up projects and environmental action</li>
+                        <li>Student-volunteer programmes and partnerships</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">Learn about outreach</a>
+                </div>
+
+                <!-- 12. Fun & Student Engagement -->
+                <div id="fun-engagement" class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="550">
+                    <h3 class="text-2xl font-semibold mb-3">12. Fun & Student Engagement</h3>
+                    <p class="text-gray-700 mb-3">Activities and content that build community and keep student life enjoyable.</p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                        <li>Birthday shout-outs and student interviews</li>
+                        <li>"A Day in Our School" photo series</li>
+                        <li>House competitions leaderboard (clean & safe)</li>
+                        <li>School memes section (moderated and family-friendly)</li>
+                    </ul>
+                    <a href="#" class="text-blue-900 font-medium underline">See more fun activities</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Activities Gallery -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Life at Katikamu</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="a7.png.jpg" alt="Students Playing Sports" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-2">Sports Day</h3>
+                        <p class="text-gray-600">Students enjoying various sports activities</p>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="a6.jpg" alt="Science Club Activities" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-2">Science Club</h3>
+                        <p class="text-gray-600">Hands-on learning experience</p>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-md group">
+                    <img src="simpy.jpg" alt="Music Performance" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="p-4 bg-white">
+                        <h3 class="font-semibold text-lg mb-2">Music & Drama</h3>
+                        <p class="text-gray-600">Expressing creativity through arts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Student Experiences</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <a href="simpy.jpg">
+                        <img src="simpy.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        </a>
+                        <div>
+                            <h4 class="font-semibold">Mukiza Simpson</h4>
+                            <p class="text-sm text-gray-600">S.2 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
+                </div>
+
+                 <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <a href="a5.png">
+                        <img src="a5.png" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        </a><div>
+
+                            <h4 class="font-semibold">Wasswa Moses</h4>
+                            <p class="text-sm text-gray-600">S.5 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <a href="a6.jpg">
+                        <img src="a6.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        </a>
+                        <div>
+                            <h4 class="font-semibold">Atuhairwe Jonathan</h4>
+                            <p class="text-sm text-gray-600">S.3 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
+                </div>
+
+                 <!-- Testimonial 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <a href="a8.jpg">
+                        <img src="a8.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        </a>
+                        <div>
+                            <h4 class="font-semibold">Turyatemba Nolan</h4>
+                            <p class="text-sm text-gray-600">S.5 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
+                </div>
+                 <!-- Testimonial 5 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                       <a href="a4.png"> 
+                        <img src="a4.png" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        </a>
+                        <div>
+                            <h4 class="font-semibold">Kato Josiah</h4>
+                            <p class="text-sm text-gray-600">S.5 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
+                </div>
+                <!-- Testimonial 6 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <a href="schoolfees.jpg">
+                        <img src="schoolfees.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
+                        </a>
+                        <div>
+                            <h4 class="font-semibold">Nizeyimana Fredrick</h4>
+                            <p class="text-sm text-gray-600">S.3 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+           
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p>Katikamu SDA Secondary School</p>
+                    <p>P.O. Box 23, Wobulenzi</p>
+                    <p>Uganda</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-yellow-500">Home</a></li>
+                        <li><a href="aboutus.html" class="hover:text-yellow-500">About Us</a></li>
+                        <li><a href="academics.html" class="hover:text-yellow-500">Academics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Turnels dev tech | All rights reserved.<br>Katikamu SDA SS</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+    <script src="assets/js/morph.js"></script>
+</body>
+</html>

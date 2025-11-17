@@ -192,9 +192,11 @@
 
         /* Highlight face for primary student-life image: shift framing and lighten overlay */
         .showcase-item.focus-face {
-            /* Zoom out to show more of the whole image */
-            background-position: center;
-            background-size: contain;
+            /* Shift framing downward so the student's uniform/torso is visible (crop face)
+               - desktop: show lower third of the image
+               - uses cover so image fills the area */
+            background-position: center 65%;
+            background-size: cover;
             background-repeat: no-repeat;
             background-color: #0b1220; /* dark background to fill any gaps */
         }
@@ -282,6 +284,11 @@
             .section-content .bio h2 {
                 font-size: 36px;
                 line-height: 40px;
+            }
+
+            /* On narrower screens, shift focus further down so uniform remains visible */
+            .showcase-item.focus-face {
+                background-position: center 75%;
             }
         }
         .mission-card:hover {
@@ -514,6 +521,22 @@
                         </li>
                     </ul>
                 </div>
+                <!-- Blog preview(s) -->
+                <div class="mt-12" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">From Student Life — Latest Blog</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <a href="studentlife.html#blog-stay-focused" class="block bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden" data-aos="fade-up">
+                            <div class="w-full h-40 bg-cover bg-center" style="background-image: url('simpy.jpg');" role="img" aria-label="How to Stay Focused in Class"></div>
+                            <div class="p-4">
+                                <h4 class="text-lg font-semibold text-blue-900">How to Stay Focused in Class</h4>
+                                <p class="text-gray-600 text-sm mt-2">Practical tips for mastering concentration under Uganda’s new curriculum — stretches, rituals and note-taking hacks.</p>
+                                <div class="mt-4">
+                                    <span class="inline-block bg-yellow-600 text-white px-4 py-2 rounded-full text-sm">Read the full post</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -580,7 +603,7 @@
                             <div class="mt-8 flex items-center space-x-4 kf-animated kf-slide-left kf-delay-4">
                                 <div class="flex-shrink-0">
                                     <div class="w-24 h-24 rounded-full bg-blue-100 border-4 border-yellow-400 shadow-lg overflow-hidden">
-                                        <img src="https://placehold.co/400x400/073e79/ffffff?text=DP" alt="Mr. Dayo Paul" class="w-full h-full object-cover">
+                                        <img src="https://placehold.co/400x400/073e79/ffffff?text=D.P" alt="Mr. Dayo Paul" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="flex-grow">
@@ -597,7 +620,7 @@
 
                 <!-- Image Panel (right) -->
                 <div class="grid gap-6">
-                    <div class="image-panel h-64 md:h-72 rounded-lg bg-cover bg-center shadow-lg kf-animated kf-slide-right" role="img" aria-label="Students on campus" style="background-image: url('https://www.katikamusdass.ac.ug/wp-content/uploads/2015/10/DSC_9037-1500x630.jpg');"></div>
+                    <div class="image-panel h-64 md:h-72 rounded-lg bg-cover bg-center shadow-lg kf-animated kf-slide-right" role="img" aria-label="Headteacher portrait" style="background-image: url('a4.png'); background-position: center 30%; background-size: cover;"></div>
                     <div class="p-6 bg-blue-50 rounded-lg shadow-md kf-animated kf-pop kf-delay-2">
                         <blockquote class="text-blue-900 italic">
                             "We are committed to nurturing every student's potential through academic excellence and Christian values."

@@ -16,25 +16,53 @@
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
+            color: #0f172a;
+            -webkit-font-smoothing:antialiased;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Poppins', sans-serif;
         }
+
+        /* Lively card styles used across the page */
         .activity-card {
-            transition: all 0.3s ease-in-out;
+            transition: transform 0.36s cubic-bezier(.2,.9,.2,1), box-shadow 0.36s;
+            will-change: transform;
         }
         .activity-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 18px 30px rgba(2,6,23,0.12);
         }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+
+        .card-badge {
+            display: inline-block;
+            background: linear-gradient(90deg,#fde68a,#f59e0b);
+            color: #1f2937;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.75rem;
         }
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
+
+        /* Numbered section labels for better organization */
+        .section-number {
+            display:inline-flex; align-items:center; justify-content:center;
+            width:2rem; height:2rem; border-radius:0.5rem; font-weight:700;
+            background: linear-gradient(90deg,#93c5fd,#3b82f6); color:white; margin-right:0.75rem;
+            box-shadow: 0 6px 14px rgba(59,130,246,0.12);
         }
+
+        .schedule-table thead th { text-align:left }
+        .schedule-table tbody tr:hover { background: rgba(59,130,246,0.04); }
+        .schedule-time { font-weight:700; color:#0f172a }
+
+        .club-img { width:100%; height:11rem; object-fit: cover; display:block }
+        @media (min-width: 768px) {
+            .club-img { width:12rem; height:11rem; }
+        }
+        .club-cta { display:inline-flex; align-items:center; gap:0.5rem }
+
+        @keyframes float { 0%{ transform: translateY(0);} 50%{ transform: translateY(-8px);} 100%{ transform: translateY(0);} }
+        .float-animation { animation: float 3s ease-in-out infinite; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -109,53 +137,500 @@
         </div>
     </section>
 
+    <!-- Blog: How to Stay Focused in Class (removed) -->
+
+    <!-- Quick links: jump to hub sections -->
+    <nav aria-label="Student life quick links" class="py-6 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap gap-3 justify-center" data-aos="fade-up">
+                <a href="#academics-support" class="px-4 py-2 bg-blue-50 text-blue-900 rounded-full font-medium hover:bg-blue-100">Academic Support</a>
+                <a href="#student-achievements" class="px-4 py-2 bg-blue-50 text-blue-900 rounded-full font-medium hover:bg-blue-100">Achievements</a>
+                <a href="#sports-activities" class="px-4 py-2 bg-blue-50 text-blue-900 rounded-full font-medium hover:bg-blue-100">Sports</a>
+                <a href="#clubs-societies" class="px-4 py-2 bg-blue-50 text-blue-900 rounded-full font-medium hover:bg-blue-100">Clubs</a>
+                <a href="#resources" class="px-4 py-2 bg-blue-50 text-blue-900 rounded-full font-medium hover:bg-blue-100">Resources</a>
+                <a href="#events-activities" class="px-4 py-2 bg-blue-50 text-blue-900 rounded-full font-medium hover:bg-blue-100">Events</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Student Life Categories -->
     <section class="py-16 bg-white" style="background-color: rgb(143, 211, 231);">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Clubs & Societies -->
                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300" data-aos="fade-up" data-aos-duration="1000">
-                    <i class="fas fa-users text-3xl text-blue-900 mb-4"></i>
+                    <i data-feather="users" class="text-3xl text-blue-900 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Clubs & Societies</h3>
                     <p class="text-gray-600 mb-4">Join various academic, cultural, and special interest clubs.</p>
-                    <ul class="text-gray-700 space-y-2">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Science Club</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Young Farmers</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Path Finder Club</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Interact Club</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Science Club</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Debate Society</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>EduTech Club</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Good Samaritan Club</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Music & Drama</li>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Science Club</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Young Farmers</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Path Finder Club</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Interact Club</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Debate Society</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>EduTech Club</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Good Samaritan Club</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Music & Drama</li>
+                    </ul>
                 </div>
 
                 <!-- Sports & Recreation -->
                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="100" class="list">
-                    <i class="fas fa-futbol text-3xl text-blue-900 mb-4"></i>
+                    <i data-feather="activity" class="text-3xl text-blue-900 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Sports & Recreation</h3>
                     <p class="text-gray-600 mb-4">Develop teamwork and leadership through sports.</p>
                     <ul class="text-gray-700 space-y-2">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Football</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Basketball</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Volley Ball</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Board Games</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Rugby</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Athletics</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Football</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Basketball</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Volley Ball</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Board Games</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Rugby</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Athletics</li>
                     </ul>
                 </div>
 
                 <!-- Spiritual Life -->
                 <div class="bg-gray-50 rounded-lg p-6 shadow-sm hover:shadow-md transition" data-aos="fade-up" data-aos-delay="200" class="list">
-                    <i class="fas fa-church text-3xl text-blue-900 mb-4"></i>
+                    <i data-feather="book-open" class="text-3xl text-blue-900 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Spiritual Life</h3>
                     <p class="text-gray-600 mb-4">Grow in faith through worship and service.</p>
                     <ul class="text-gray-700 space-y-2">
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Morning Devotions</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Bible Study</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Evenimg devotions</li>
-                        <li><i class="fas fa-check text-green-500 mr-2"></i>Community Service</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Morning Devotions</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Bible Study</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Evenimg devotions</li>
+                        <li><i data-feather="check-circle" class="text-green-500 mr-2 w-4 h-4 inline"></i>Community Service</li>
                     </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- School Schedule -->
+    <section id="school-schedule" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">School Schedule</h2>
+            <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="50">A typical weekday timetable for our students — boarding and day students follow a structured routine that balances worship, lessons and recreation.</p>
+
+            <div class="overflow-x-auto" data-aos="fade-up" data-aos-delay="100">
+                <table class="min-w-full bg-white rounded-lg shadow-sm schedule-table">
+                    <thead class="bg-gradient-to-r from-blue-900 to-indigo-700 text-white">
+                        <tr>
+                            <th class="py-3 px-4 text-left">Time</th>
+                            <th class="py-3 px-4 text-left">Monday - Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700">
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">04:30 – 05:00</td>
+                            <td class="py-3 px-4">Wake up & preparations</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">05:00 – 06:00</td>
+                            <td class="py-3 px-4">Prep / Morning study</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">06:00 – 06:30</td>
+                            <td class="py-3 px-4">Prayers</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">06:30 – 07:00</td>
+                            <td class="py-3 px-4">Breakfast / Break (30 mins)</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">07:00 – 09:40</td>
+                            <td class="py-3 px-4">Lessons</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">09:40 – 10:10</td>
+                            <td class="py-3 px-4">Mid-morning break</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">10:10 – 12:50</td>
+                            <td class="py-3 px-4">Lessons resume</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">12:50 – 13:50</td>
+                            <td class="py-3 px-4">Lunch (1 hour)</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">13:50 – 15:10</td>
+                            <td class="py-3 px-4">Lessons resume</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">16:00 – 17:30</td>
+                            <td class="py-3 px-4">Personal admin & supper</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="py-3 px-4 schedule-time">18:00 – 18:40</td>
+                            <td class="py-3 px-4">Evening prayers</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 schedule-time">19:00 – 21:00</td>
+                            <td class="py-3 px-4">Preps / Study period</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clubs & Societies -->
+    <section id="clubs" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold" data-aos="fade-up">Clubs & Societies</h2>
+                <p class="text-gray-600" data-aos="fade-up" data-aos-delay="50">Explore our active student clubs. Click a card to learn more or join.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up">
+                    <div class="md:flex">
+                        <img src="images/Intramurals Sports Fest Presentation in Red and Orange Illustrative and Gradient Style copy.jpg" alt="Sports Club — Intramurals" class="w-full md:w-48 h-44 object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-semibold morph morph-strong in">Sports Club</h3>
+                                <span class="card-badge">Team</span>
+                            </div>
+                            <p class="text-gray-600 morph in">Football, basketball, athletics and more — building teamwork and fitness.</p>
+                            <div class="mt-4">
+                                <a href="#clubs" class="text-blue-900 club-cta morph-hover" aria-label="Learn more about Sports Club">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    Learn more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                    <div class="md:flex">
+                        <img src="a6.jpg" alt="Science Club" class="w-full md:w-48 h-44 object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-semibold morph morph-strong in">Science & Robotics</h3>
+                                <span class="card-badge">STEM</span>
+                            </div>
+                            <p class="text-gray-600 morph in">Hands-on experiments and tech projects to inspire future scientists and engineers.</p>
+                            <div class="mt-4">
+                                <a href="#clubs" class="text-blue-900 club-cta morph-hover" aria-label="Learn more about Science Club">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    Learn more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="md:flex">
+                        <img src="simpy.jpg" alt="Music & Drama" class="w-full md:w-48 h-44 object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-semibold morph morph-strong in">Music & Drama</h3>
+                                <span class="card-badge">Arts</span>
+                            </div>
+                            <p class="text-gray-600 morph in">Performances, rehearsals and creative workshops throughout the year.</p>
+                            <div class="mt-4">
+                                <a href="#clubs" class="text-blue-900 club-cta morph-hover" aria-label="Learn more about Music & Drama">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    Learn more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+                    <div class="md:flex">
+                        <img src="images/Debate Topics for College Students.jpg" alt="Debate Club — topics" class="w-full md:w-48 h-44 object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-semibold morph morph-strong in">Debate Club</h3>
+                                <span class="card-badge">Debate</span>
+                            </div>
+                            <p class="text-gray-600 morph in">Develop confidence and public speaking skills in local and national competitions.</p>
+                            <div class="mt-4">
+                                <a href="#clubs" class="text-blue-900 club-cta morph-hover" aria-label="Learn more about Debate Club">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    Learn more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="md:flex">
+                        <img src="a8.jpg" alt="Young Farmers" class="w-full md:w-48 h-44 object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-semibold morph in">Young Farmers</h3>
+                                <span class="card-badge">Agro</span>
+                            </div>
+                            <p class="text-gray-600 morph in">Practical agriculture projects and environmental stewardship initiatives.</p>
+                            <div class="mt-4">
+                                <a href="#clubs" class="text-blue-900 club-cta morph-hover" aria-label="Learn more about Young Farmers">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    Learn more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                    <div class="md:flex">
+                        <img src="images/_Pathfinder Logo Seventh Day Adventist_ Sticker for Sale by Just Christianity.jpg" alt="Path Finder Club — Pathfinder logo" class="w-full md:w-48 h-44 object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="text-2xl font-semibold morph in">Path Finder Club</h3>
+                                <span class="card-badge">Outdoor</span>
+                            </div>
+                            <p class="text-gray-600 morph in">Outdoor skills, leadership and community service projects.</p>
+                            <div class="mt-4">
+                                <a href="#clubs" class="text-blue-900 club-cta morph-hover" aria-label="Learn more about Path Finder Club">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline mr-2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    Learn more
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expanded Student Life Sections -->
+    <section id="student-life-hub" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8" data-aos="fade-up">Student Life Hub</h2>
+
+            <p class="text-center text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="50">Explore resources, clubs, events and daily life at Katikamu. Each area below contains quick links, contact points and downloadable resources where available.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 1. Academic Support -->
+                <div id="academics-support" class="bg-blue-50 rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up">
+                    <div class="md:flex">
+                        <img src="a6.jpg" alt="Academic Support" class="w-full md:w-48 h-44 md:h-auto object-cover">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">1. Academic Support</h3>
+                            <p class="text-gray-700 mb-3 morph in">Helps students succeed in class with structured support: homework schedules, revision resources and study groups.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Homework schedule & smart reminders (check noticeboard & pastoral channels)</li>
+                                <li>Revision packs and curated reading lists</li>
+                                <li>Class timetables and printable planners</li>
+                                <li>Study tips, note-taking guides and time management tools</li>
+                                <li>Academic clubs: Math, Science, ICT and Debate</li>
+                                <li>Peer study groups & scheduled past-paper practice</li>
+                            </ul>
+                            <div class="flex gap-3">
+                                <a href="#resources" class="text-blue-900 font-medium underline">Browse resources
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </a>
+                                <a href="mailto:academics@katikamu.example?subject=Academic%20Support%20enquiry" class="text-gray-700 hover:text-blue-900">Contact Academic Team</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Student Achievements -->
+                <div id="student-achievements" class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="50">
+                    <div class="md:flex">
+                        <img src="a4.png" alt="Student Achievements" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">2. Student Achievements</h3>
+                            <p class="text-gray-700 mb-3 morph in">Highlighting success: awards, competitions and student projects that inspire the whole school.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Academic award winners & honour roll</li>
+                                <li>Sports trophies and match accolades</li>
+                                <li>Club achievements, debating & science fair winners</li>
+                                <li>Innovation projects and entrepreneurship highlights</li>
+                                <li>Star student spotlights (Student of the Week)</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">Nominate a student
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Sports & Extra Activities -->
+                <div id="sports-activities" class="bg-blue-50 rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="md:flex">
+                        <img src="a7.png.jpg" alt="Sports & Recreation" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">3. Sports & Extra Activities</h3>
+                            <p class="text-gray-700 mb-3 morph in">Encouraging fitness, teamwork and performance through organised sport and creative shows.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>School team profiles and captain contacts</li>
+                                <li>Training schedules and match fixtures/results</li>
+                                <li>Sports news: football, netball, basketball, athletics</li>
+                                <li>Talent shows: music, dance and drama performances</li>
+                                <li>Art & creativity showcases</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">See fixtures & results
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 5. School Life & Culture -->
+                <div id="school-life-culture" class="bg-blue-50 rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="md:flex">
+                        <img src="a8.jpg" alt="School Life & Culture" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">5. School Life & Culture</h3>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Uniform guidelines and expectations</li>
+                                <li>Dormitory life: routines and respect guidelines</li>
+                                <li>Classroom culture and daily routines</li>
+                                <li>Meals & cafeteria menus</li>
+                                <li>Campus tour & interactive map (coming soon)</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">View uniform & dorm rules
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Guidance, Wellness & Support -->
+                <div id="guidance-wellness" class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="250">
+                    <div class="md:flex">
+                        <img src="a5.png" alt="Guidance & Wellness" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">6. Guidance, Wellness & Support</h3>
+                            <p class="text-gray-700 mb-3 morph in">Safe, general guidance focused on healthy habits, time management and personal development.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Healthy habits & hygiene tips</li>
+                                <li>Time-management and study–life balance ideas</li>
+                                <li>Anti-bullying awareness programs</li>
+                                <li>Basic first-aid guidance for common school injuries</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">Guidance resources
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Leadership & Student Governance -->
+                <div id="leadership-governance" class="bg-blue-50 rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="md:flex">
+                        <img src="a6.jpg" alt="Leadership & Governance" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">7. Leadership & Student Governance</h3>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Prefects and class leaders: roles & contact points</li>
+                                <li>Student committees and responsibilities</li>
+                                <li>Ongoing student-led projects and how to get involved</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">Meet the prefects
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Events & School Activities -->
+                <div id="events-activities" class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="350">
+                    <div class="md:flex">
+                        <img src="a7.png.jpg" alt="Events & Activities" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">8. Events & School Activities</h3>
+                            <p class="text-gray-700 mb-3 morph in">A lively calendar of cultural days, fairs, competitions and celebrations.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Cultural days & music festivals</li>
+                                <li>Science fairs, spelling bees & ICT expos</li>
+                                <li>Sports day & chapel programs</li>
+                                <li>Prefect campaigns & end-of-term celebrations</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">Event calendar
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Resources Section -->
+                <div id="resources" class="bg-blue-50 rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+                    <div class="md:flex">
+                        <img src="images/Intramurals Sports Fest Presentation in Red and Orange Illustrative and Gradient Style copy.jpg" alt="Resources" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">9. Resources</h3>
+                            <p class="text-gray-700 mb-3 morph in">Downloadable notes, past exam papers and helpful links to support study and revision.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li><a href="#" class="underline text-blue-900">Download: Past Papers (placeholder)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    </a></li>
+                                <li><a href="#" class="underline text-blue-900">Download: Revision Notes (placeholder)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    </a></li>
+                                <li><a href="#" class="underline text-blue-900">Term Calendar & School Policies (placeholder)
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                    </a></li>
+                            </ul>
+                            <p class="text-sm text-gray-600">Files will be uploaded to this section — contact <a href="mailto:resources@katikamu.example" class="text-blue-900 underline">resources@katikamu.example</a> to provide material.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Creativity & Innovation -->
+                <div id="creativity-innovation" class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="450">
+                    <div class="md:flex">
+                        <img src="simpy.jpg" alt="Creativity & Innovation" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">10. Creativity & Innovation</h3>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Student art gallery & photography pages</li>
+                                <li>Student-made apps and coding challenges</li>
+                                <li>Robotics & engineering mini-projects</li>
+                                <li>Entrepreneurship idea showcases</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">Submit a project
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Community & Outreach -->
+                <div id="community-outreach" class="bg-blue-50 rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+                    <div class="md:flex">
+                        <img src="a8.jpg" alt="Community & Outreach" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">11. Community & Outreach</h3>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Community service and charity visits</li>
+                                <li>Clean-up projects and environmental action</li>
+                                <li>Student-volunteer programmes and partnerships</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">Learn about outreach
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Fun & Student Engagement -->
+                <div id="fun-engagement" class="bg-white rounded-lg shadow-sm activity-card overflow-hidden" data-aos="fade-up" data-aos-delay="550">
+                    <div class="md:flex">
+                        <img src="a7.png.jpg" alt="Fun & Student Engagement" class="w-full md:w-48 h-44 md:h-auto object-cover club-img">
+                        <div class="p-6 flex-1">
+                            <h3 class="text-2xl font-semibold mb-3 morph in">12. Fun & Student Engagement</h3>
+                            <p class="text-gray-700 mb-3 morph in">Activities and content that build community and keep student life enjoyable.</p>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1 mb-4">
+                                <li>Birthday shout-outs and student interviews</li>
+                                <li>"A Day in Our School" photo series</li>
+                                <li>House competitions leaderboard (clean & safe)</li>
+                                <li>School memes section (moderated and family-friendly)</li>
+                            </ul>
+                            <a href="#" class="text-blue-900 font-medium underline">See more fun activities
+                                <svg xmlns="http://www.w3.org/2000/svg" class="inline ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -166,25 +641,25 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">Life at Katikamu</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="overflow-hidden rounded-lg shadow-md group">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm activity-card group">
                     <img src="a7.png.jpg" alt="Students Playing Sports" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="p-4 bg-white">
-                        <h3 class="font-semibold text-lg mb-2">Sports Day</h3>
-                        <p class="text-gray-600">Students enjoying various sports activities</p>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2 morph in">Sports Day</h3>
+                        <p class="text-gray-600 morph in">Students enjoying various sports activities</p>
                     </div>
                 </div>
-                <div class="overflow-hidden rounded-lg shadow-md group">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm activity-card group">
                     <img src="a6.jpg" alt="Science Club Activities" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="p-4 bg-white">
-                        <h3 class="font-semibold text-lg mb-2">Science Club</h3>
-                        <p class="text-gray-600">Hands-on learning experience</p>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2 morph in">Science Club</h3>
+                        <p class="text-gray-600 morph in">Hands-on learning experience</p>
                     </div>
                 </div>
-                <div class="overflow-hidden rounded-lg shadow-md group">
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm activity-card group">
                     <img src="simpy.jpg" alt="Music Performance" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
-                    <div class="p-4 bg-white">
-                        <h3 class="font-semibold text-lg mb-2">Music & Drama</h3>
-                        <p class="text-gray-600">Expressing creativity through arts</p>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-lg mb-2 morph in">Music & Drama</h3>
+                        <p class="text-gray-600 morph in">Expressing creativity through arts</p>
                     </div>
                 </div>
             </div>
@@ -203,11 +678,11 @@
                         <img src="simpy.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
                         </a>
                         <div>
-                            <h4 class="font-semibold">Mukiza Simpson</h4>
-                            <p class="text-sm text-gray-600">S.2 Student</p>
+                            <h4 class="font-semibold morph in">Mukiza Simpson</h4>
+                            <p class="text-sm text-gray-600 morph in">S.2 Student</p>
                         </div>
                     </div>
-                    <p class="text-gray-700">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
+                    <p class="text-gray-700 morph in">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
                 </div>
 
                  <!-- Testimonial 2 -->
@@ -217,11 +692,11 @@
                         <img src="a5.png" alt="Student" class="w-12 h-12 rounded-full mr-4">
                         </a><div>
 
-                            <h4 class="font-semibold">Wasswa Moses</h4>
-                            <p class="text-sm text-gray-600">S.5 Student</p>
+                            <h4 class="font-semibold morph in">Wasswa Moses</h4>
+                            <p class="text-sm text-gray-600 morph in">S.5 Student</p>
                         </div>
                     </div>
-                    <p class="text-gray-700">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
+                    <p class="text-gray-700 morph in">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
                 </div>
                 <!-- Testimonial 3 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
@@ -230,11 +705,11 @@
                         <img src="a6.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
                         </a>
                         <div>
-                            <h4 class="font-semibold">Atuhairwe Jonathan</h4>
-                            <p class="text-sm text-gray-600">S.3 Student</p>
+                            <h4 class="font-semibold morph in">Atuhairwe Jonathan</h4>
+                            <p class="text-sm text-gray-600 morph in">S.3 Student</p>
                         </div>
                     </div>
-                    <p class="text-gray-700">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
+                    <p class="text-gray-700 morph in">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
                 </div>
 
                  <!-- Testimonial 4 -->
@@ -244,11 +719,11 @@
                         <img src="a8.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
                         </a>
                         <div>
-                            <h4 class="font-semibold">Turyatemba Nolan</h4>
-                            <p class="text-sm text-gray-600">S.5 Student</p>
+                            <h4 class="font-semibold morph in">Turyatemba Nolan</h4>
+                            <p class="text-sm text-gray-600 morph in">S.5 Student</p>
                         </div>
                     </div>
-                    <p class="text-gray-700">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
+                    <p class="text-gray-700 morph in">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
                 </div>
                  <!-- Testimonial 5 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
@@ -257,11 +732,11 @@
                         <img src="a4.png" alt="Student" class="w-12 h-12 rounded-full mr-4">
                         </a>
                         <div>
-                            <h4 class="font-semibold">Kato Josiah</h4>
-                            <p class="text-sm text-gray-600">S.5 Student</p>
+                            <h4 class="font-semibold morph in">Kato Josiah</h4>
+                            <p class="text-sm text-gray-600 morph in">S.5 Student</p>
                         </div>
                     </div>
-                    <p class="text-gray-700">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
+                    <p class="text-gray-700 morph in">"Being part of the debate club has improved my confidence and public speaking skills. The teachers here truly care about our personal growth."</p>
                 </div>
                 <!-- Testimonial 6 -->
                 <div class="bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
@@ -270,11 +745,11 @@
                         <img src="schoolfees.jpg" alt="Student" class="w-12 h-12 rounded-full mr-4">
                         </a>
                         <div>
-                            <h4 class="font-semibold">Nizeyimana Fredrick</h4>
-                            <p class="text-sm text-gray-600">S.3 Student</p>
+                            <h4 class="font-semibold morph in">Nizeyimana Fredrick</h4>
+                            <p class="text-sm text-gray-600 morph in">S.3 Student</p>
                         </div>
                     </div>
-                    <p class="text-gray-700">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
+                    <p class="text-gray-700 morph in">"The diverse range of activities here has helped me develop not just academically, but as a whole person. I've made lifelong friends and learned valuable computer skills that have brouht me to where i am."</p>
                 </div>
 
             </div>
@@ -302,10 +777,10 @@
                 </div>
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                    <div class="flex space-x-3">
+                        <a href="#" class="hover:text-yellow-500" aria-label="Facebook"><span class="inline-flex items-center justify-center w-8 h-8 bg-white text-blue-800 rounded-full font-semibold">f</span></a>
+                        <a href="#" class="hover:text-yellow-500" aria-label="Twitter"><span class="inline-flex items-center justify-center w-8 h-8 bg-white text-blue-500 rounded-full font-semibold">t</span></a>
+                        <a href="#" class="hover:text-yellow-500" aria-label="Instagram"><span class="inline-flex items-center justify-center w-8 h-8 bg-white text-pink-600 rounded-full font-semibold">i</span></a>
                     </div>
                 </div>
             </div>
@@ -316,10 +791,14 @@
     </footer>
 
     <script>
-        AOS.init({
-            duration: 800,
-            once: true
-        });
+        // Initialize Feather icons (if available) and AOS
+        if (window.feather) {
+            try { feather.replace(); } catch(e) { /* graceful */ }
+        }
+
+        if (window.AOS) {
+            AOS.init({ duration: 800, once: true });
+        }
     </script>
     <script src="assets/js/morph.js"></script>
 </body>
