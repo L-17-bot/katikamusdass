@@ -75,17 +75,20 @@
                 <a href="academics.html" class="text-blue-900 font-medium hover:text-yellow-600 transition relative group">Academics
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Facilities
+                <a href="#" class="text-gray-400 font-medium relative group coming-soon-link">Facilities
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span class="coming-soon-tooltip">Coming Soon</span>
                 </a>
-                <a href="gallery.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Gallery
+                <a href="#" class="text-gray-400 font-medium relative group coming-soon-link">Gallery
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span class="coming-soon-tooltip">Coming Soon</span>
                 </a>
                 <a href="studentlife.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Student Life
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                 <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">News & Events
+                <a href="#" class="text-gray-400 font-medium relative group coming-soon-link">News & Events
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span class="coming-soon-tooltip">Coming Soon</span>
                 </a>
                 <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Contact
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
@@ -103,12 +106,81 @@
                 <a href="index.html" class="text-gray-700 font-medium">Home</a>
                 <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
                 <a href="academics.html" class="text-blue-900 font-medium">Academics</a>
-                <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
+                <a href="#" class="text-gray-400 font-medium coming-soon-link">Facilities <span class="coming-soon-tooltip">Coming Soon</span></a>
                 <a href="studentlife.html" class="text-gray-700 font-medium">Student Life</a>
-                <a href="gallery cards.html" class="text-gray-700 font-medium">Gallery</a>
-                <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
+                <a href="#" class="text-gray-400 font-medium coming-soon-link">Gallery <span class="coming-soon-tooltip">Coming Soon</span></a>
+                <a href="#" class="text-gray-400 font-medium coming-soon-link">News & Events <span class="coming-soon-tooltip">Coming Soon</span></a>
                 <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
             </div>
+            <style>
+                .coming-soon-link {
+                    cursor: not-allowed;
+                    position: relative;
+                }
+                .coming-soon-tooltip {
+                    display: none;
+                    position: absolute;
+                    left: 50%;
+                    top: -2.2em;
+                    transform: translateX(-50%);
+                    background: #1e40af;
+                    color: #fff;
+                    padding: 0.3em 0.8em;
+                    border-radius: 0.5em;
+                    font-size: 0.85em;
+                    white-space: nowrap;
+                    z-index: 10;
+                    box-shadow: 0 2px 8px rgba(30,64,175,0.15);
+                    animation: fadeIn 0.3s;
+                }
+                .coming-soon-link:hover .coming-soon-tooltip,
+                .coming-soon-link:focus .coming-soon-tooltip {
+                    display: block;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+            </style>
+
+            <script>
+                // Coming Soon click effect
+                document.addEventListener('DOMContentLoaded', function() {
+                    function showComingSoonEffect(e) {
+                        e.preventDefault();
+                        // Remove any existing effect
+                        const old = document.getElementById('coming-soon-modal');
+                        if (old) old.remove();
+                        // Create modal
+                        const modal = document.createElement('div');
+                        modal.id = 'coming-soon-modal';
+                        modal.style.position = 'fixed';
+                        modal.style.top = 0;
+                        modal.style.left = 0;
+                        modal.style.width = '100vw';
+                        modal.style.height = '100vh';
+                        modal.style.background = 'rgba(30,64,175,0.85)';
+                        modal.style.display = 'flex';
+                        modal.style.alignItems = 'center';
+                        modal.style.justifyContent = 'center';
+                        modal.style.zIndex = 9999;
+                        modal.innerHTML = `
+                            <div style="background: #fff; color: #1e40af; padding: 2.5em 2em; border-radius: 1em; box-shadow: 0 8px 32px rgba(30,64,175,0.18); text-align: center; max-width: 90vw;">
+                                <h2 style="font-size:2em; font-weight:700; margin-bottom:0.5em;">Coming Soon!</h2>
+                                <p style="font-size:1.1em;">This page is under preparation.<br>Stay tuned for something amazing!</p>
+                                <button id="close-coming-soon" style="margin-top:1.5em; background:#1e40af; color:#fff; border:none; padding:0.7em 2em; border-radius:0.5em; font-size:1em; cursor:pointer;">Close</button>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                        document.getElementById('close-coming-soon').onclick = function() {
+                            modal.remove();
+                        };
+                    }
+                    document.querySelectorAll('.coming-soon-link').forEach(link => {
+                        link.addEventListener('click', showComingSoonEffect);
+                    });
+                });
+            </script>
         </div>
     </header>
 
@@ -174,40 +246,6 @@
                     </div>
                 </section>
 
-                <!-- Latest Academic News -->
-                <section class="py-16 bg-white">
-                    <div class="container mx-auto px-4">
-                        <h2 class="text-3xl font-bold text-blue-900 mb-8" data-aos="fade-up">Latest Academic News</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
-                                <div class="p-6">
-                                    <span class="text-sm text-gray-500">October 1, 2025</span>
-                                    <h3 class="text-xl font-bold text-blue-900 mt-2 mb-3">BACK TO SCHOOL POST COVID 19 CIRCULAR 2025/26</h3>
-                                    <p class="text-gray-600 mb-4">Important updates and guidelines for the new academic year...</p>
-                                    <a href="#" class="text-yellow-600 hover:text-yellow-700 font-semibold">Read More →</a>
-                                </div>
-                            </div>
-
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                                <div class="p-6">
-                                    <span class="text-sm text-gray-500">September 15, 2025</span>
-                                    <h3 class="text-xl font-bold text-blue-900 mt-2 mb-3">Katisco wins National Debate Championship</h3>
-                                    <p class="text-gray-600 mb-4">Our debate team emerges victorious in the national competition...</p>
-                                    <a href="#" class="text-yellow-600 hover:text-yellow-700 font-semibold">Read More →</a>
-                                </div>
-                            </div>
-
-                            <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                                <div class="p-6">
-                                    <span class="text-sm text-gray-500">September 1, 2025</span>
-                                    <h3 class="text-xl font-bold text-blue-900 mt-2 mb-3">UNEB Results Celebration</h3>
-                                    <p class="text-gray-600 mb-4">Congratulations to our students for outstanding performance...</p>
-                                    <a href="#" class="text-yellow-600 hover:text-yellow-700 font-semibold">Read More →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
                     <script>
                         // Initialize AOS
@@ -435,16 +473,21 @@
                     <p class="text-gray-700 mb-6">Our A-Level program prepares students for UACE examinations. Students specialize in combinations designed to prepare them for university and careers.</p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div class="subject-card bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up">
-                            <h4 class="text-lg font-bold text-blue-900 mb-2">Science (PCM/B)</h4>
+                            <h4 class="text-lg font-bold text-blue-900 mb-2">Science (PCM)</h4>
                             <p class="text-gray-600 text-sm">Physics, Chemistry, Mathematics/Biology — for medicine, engineering and sciences.</p>
                         </div>
                         <div class="subject-card bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="50">
-                            <h4 class="text-lg font-bold text-blue-900 mb-2">Arts (HED/G)</h4>
+                            <h4 class="text-lg font-bold text-blue-900 mb-2">Arts (HEG)</h4>
                             <p class="text-gray-600 text-sm">History, Economics, Divinity/Geography — ideal for law, social sciences and humanities.</p>
                         </div>
                         <div class="subject-card bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="100">
                             <h4 class="text-lg font-bold text-blue-900 mb-2">Commerce (BAM/ICT)</h4>
                             <p class="text-gray-600 text-sm">Business, Accounts, Mathematics/ICT — prepares students for business and finance careers.</p>
+                        </div>
+                        <div
+                            class="subject-card bg-white p-6 rounded-lg shadow-sm" data-aos="fade-up" data-aos-delay="150">
+                            <h4 class="text-lg font-bold text-blue-900 mb-2">Many More Combinations</h4>
+                            <p class="text-gray-600 text-sm">We offer a wide range of subject combinations to suit different interests and career paths. Our academic advisors help students choose the best fit for their goals.</p>
                         </div>
                     </div>
                 </div>

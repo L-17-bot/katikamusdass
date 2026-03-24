@@ -78,7 +78,6 @@
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwlP3Fb5Z1i1Cc6SBcshJH4SEo1VrbwJlLIQ&s" alt="Katikamu SDA Logo" class="h-12 mr-3">
                 <h1 class="text-xl md:text-2xl font-bold text-blue-900">Katikamu SDA <span class="text-yellow-600">Secondary</span></h1>
             </div>
-            
             <nav class="hidden md:flex space-x-8">
                 <a href="index.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Home
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
@@ -89,45 +88,114 @@
                 <a href="academics.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Academics
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="facilities.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Facilities
+                <a href="#" class="text-gray-400 font-medium relative group coming-soon-link">Facilities
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span class="coming-soon-tooltip">Coming Soon</span>
                 </a>
-                <a href="gallery.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Gallery
+                <a href="#" class="text-gray-400 font-medium relative group coming-soon-link">Gallery
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span class="coming-soon-tooltip">Coming Soon</span>
                 </a>
                 <a href="studentlife.html" class="text-blue-900 font-medium hover:text-yellow-600 transition relative group">Student Life
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
-                <a href="news.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">News & Events
+                <a href="#" class="text-gray-400 font-medium relative group coming-soon-link">News & Events
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
+                    <span class="coming-soon-tooltip">Coming Soon</span>
                 </a>
                 <a href="contact.html" class="text-gray-700 font-medium hover:text-yellow-600 transition relative group">Contact
                     <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-yellow-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
             </nav>
-            
             <button class="md:hidden focus:outline-none" id="menu-toggle">
                 <i data-feather="menu" class="text-blue-900"></i>
             </button>
         </div>
-        
         <!-- Mobile Menu -->
         <div class="md:hidden hidden bg-white w-full py-4 px-4 shadow-lg" id="mobile-menu">
             <div class="flex flex-col space-y-4">
                 <a href="index.html" class="text-gray-700 font-medium">Home</a>
                 <a href="aboutus.html" class="text-gray-700 font-medium">About Us</a>
                 <a href="academics.html" class="text-gray-700 font-medium">Academics</a>
-                <a href="facilities.html" class="text-gray-700 font-medium">Facilities</a>
-                <a href="gallery.html" class="text-gray-700 font-medium">Gallery</a>
+                <a href="#" class="text-gray-400 font-medium coming-soon-link">Facilities <span class="coming-soon-tooltip">Coming Soon</span></a>
                 <a href="studentlife.html" class="text-blue-900 font-medium">Student Life</a>
-                <a href="news.html" class="text-gray-700 font-medium">News & Events</a>
+                <a href="#" class="text-gray-400 font-medium coming-soon-link">Gallery <span class="coming-soon-tooltip">Coming Soon</span></a>
+                <a href="#" class="text-gray-400 font-medium coming-soon-link">News & Events <span class="coming-soon-tooltip">Coming Soon</span></a>
                 <a href="contact.html" class="text-gray-700 font-medium">Contact</a>
             </div>
         </div>
+        <style>
+            .coming-soon-link {
+                cursor: not-allowed;
+                position: relative;
+            }
+            .coming-soon-tooltip {
+                display: none;
+                position: absolute;
+                left: 50%;
+                top: -2.2em;
+                transform: translateX(-50%);
+                background: #1e40af;
+                color: #fff;
+                padding: 0.3em 0.8em;
+                border-radius: 0.5em;
+                font-size: 0.85em;
+                white-space: nowrap;
+                z-index: 10;
+                box-shadow: 0 2px 8px rgba(30,64,175,0.15);
+                animation: fadeIn 0.3s;
+            }
+            .coming-soon-link:hover .coming-soon-tooltip,
+            .coming-soon-link:focus .coming-soon-tooltip {
+                display: block;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        </style>
+        <script>
+            // Coming Soon click effect
+            document.addEventListener('DOMContentLoaded', function() {
+                function showComingSoonEffect(e) {
+                    e.preventDefault();
+                    // Remove any existing effect
+                    const old = document.getElementById('coming-soon-modal');
+                    if (old) old.remove();
+                    // Create modal
+                    const modal = document.createElement('div');
+                    modal.id = 'coming-soon-modal';
+                    modal.style.position = 'fixed';
+                    modal.style.top = 0;
+                    modal.style.left = 0;
+                    modal.style.width = '100vw';
+                    modal.style.height = '100vh';
+                    modal.style.background = 'rgba(30,64,175,0.85)';
+                    modal.style.display = 'flex';
+                    modal.style.alignItems = 'center';
+                    modal.style.justifyContent = 'center';
+                    modal.style.zIndex = 9999;
+                    modal.innerHTML = `
+                        <div style="background: #fff; color: #1e40af; padding: 2.5em 2em; border-radius: 1em; box-shadow: 0 8px 32px rgba(30,64,175,0.18); text-align: center; max-width: 90vw;">
+                            <h2 style="font-size:2em; font-weight:700; margin-bottom:0.5em;">Coming Soon!</h2>
+                            <p style="font-size:1.1em;">This page is under preparation.<br>Stay tuned for something amazing!</p>
+                            <button id="close-coming-soon" style="margin-top:1.5em; background:#1e40af; color:#fff; border:none; padding:0.7em 2em; border-radius:0.5em; font-size:1em; cursor:pointer;">Close</button>
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+                    document.getElementById('close-coming-soon').onclick = function() {
+                        modal.remove();
+                    };
+                }
+                document.querySelectorAll('.coming-soon-link').forEach(link => {
+                    link.addEventListener('click', showComingSoonEffect);
+                });
+            });
+        </script>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-[60vh] bg-[url('https://images.unsplash.com/photo-1523240795612-9a054b0db644')] bg-cover bg-center">
+    <section class="relative h-[60vh] bg-[url('images/main.JPG')] bg-cover bg-center">
         <div class="absolute inset-0 bg-blue-900/70"></div>
         <div class="relative container mx-auto px-4 h-full flex items-center">
             <div class="text-white max-w-2xl" data-aos="fade-right">
